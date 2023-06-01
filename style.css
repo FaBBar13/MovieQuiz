@@ -1,0 +1,106 @@
+*,
+::before,
+::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    height: 100vh;
+    background-color: black;
+    /* background-image: url("/images/logo_moviequiz.png");
+    background-repeat: no-repeat;
+    background-position: center center; */
+}
+
+img {
+    width: 400px;
+    height: 120px;
+    object-position: center center;
+    object-fit: fill;
+}
+
+
+.loader {
+    /* border: solid 1px yellow; */
+    width: 400px;
+    height: 120px;
+    margin: 275px 450px;
+}
+
+.imagefloue {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backdrop-filter: blur(4px);
+    /* background-color: rgba(77, 74, 74, 0.4); */
+}
+
+.rideau {
+    position: relative;
+    display: flex;
+    /* overflow: hidden; */
+}
+
+.rideau p {
+    position: absolute;
+    color: white;
+    flex-shrink: 0;
+    background-color: rgb(88, 31, 31);
+    width: 400px;
+    /* height: 100%; */
+    text-align: center;
+    font-size: 6em;
+}
+
+
+
+#gauche {
+    left: 50%;
+    animation: decaleGauche 3s ease-out 1 forwards;
+}
+
+@keyframes decaleGauche {
+    0% {
+        margin-left: 100%;
+    }
+
+    /* 50% {
+        transform: translateX(-50%);
+    } */
+
+    100% {
+        margin-left: 0;
+    }
+}
+
+
+#droite {
+    left: -100%;
+    animation: decaleGauche 3s ease-out 1 forwards reverse;
+}
+
+@keyframes decaleDroite {
+    0% {
+        transform: translateX(101%);
+    }
+
+    /* 50% {
+        transform: translateX(150%);
+    } */
+
+    100% {
+        transform: translateX(200%);
+    }
+}
+
+
+
+
+
+#fin {
+    color: white;
+    display: none;
+}
