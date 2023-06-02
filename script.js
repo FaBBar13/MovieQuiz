@@ -12,4 +12,4 @@ function afficheFin() {
     divLoader.style.display = "none";
 }
 
-document.onload = setTimeout(afficheFin, 3500);
+// document.onload = setTimeout(afficheFin, 3700);

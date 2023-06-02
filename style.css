@@ -6,25 +6,28 @@
     padding: 0;
 }
 
-
 body {
     height: 100vh;
     background-color: black;
 }
 
 img {
-    width: 400px;
-    height: 120px;
+    width: 100%;
+    height: 100%;
     object-position: center center;
     object-fit: fill;
 }
 
 .loader {
     /* border: solid 1px yellow; */
-    width: 400px;
-    height: 120px;
-    margin: 275px 450px;
+    width: 30vw;
+    min-width: 30vw;
+    height: 22vh;
+    min-height: 10vh;
+    /* margin: 275px 450px; */
+    margin: 25% auto;
     text-align: center;
+
 }
 
 .imagefloue {
@@ -32,7 +35,8 @@ img {
     height: 100%;
     width: 100%;
     backdrop-filter: blur(5px);
-    animation: defloute 1s ease-out 1.2s forwards;
+    animation: defloute 1.8s ease-out 1.2s forwards;
+
 }
 
 @keyframes defloute {
@@ -55,11 +59,10 @@ img {
     position: absolute;
     color: white;
     background-color: rgb(88, 31, 31);
-    width: 200px;
+    width: 15vw;
     text-align: center;
     font-size: 6em;
 }
-
 
 #gauche {
     background-image: url("/images/rideau-gauche.jpg");
@@ -68,7 +71,6 @@ img {
     background-size: cover;
     animation: decaleGauche 3s ease-out 0.5s forwards;
 }
-
 
 @keyframes decaleGauche {
     0% {
@@ -80,7 +82,7 @@ img {
     }
 
     100% {
-        transform: skew(-10deg, 0deg) translateX(-105%);
+        transform: skew(-10deg, 0deg) translateX(-120%);
     }
 }
 
@@ -103,16 +105,15 @@ img {
     }
 
     100% {
-        transform: skew(10deg, 0deg) translateX(105%);
+        transform: skew(10deg, 0deg) translateX(120%);
     }
 }
 
 #fin {
     color: rgb(192, 188, 188);
     font-style: italic;
-    font-size: 1.52em;
-    /* animation: masque 1.5s ease-out 0.5s forwards; */
-    /* display: none; */
+    font-size: 1.5em;
+    animation: masque 1.5s ease-out 0.5s forwards;
 }
 
 @keyframes masque {
@@ -124,3 +125,10 @@ img {
         opacity: 0
     }
 }
+
+/* 
+@media only screen and (max-width : 360px) {
+    body {
+        background-color: red;
+    }
+} */
