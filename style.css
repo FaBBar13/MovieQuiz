@@ -10,9 +10,6 @@
 body {
     height: 100vh;
     background-color: black;
-    /* background-image: url("/images/logo_moviequiz.png");
-    background-repeat: no-repeat;
-    background-position: center center; */
 }
 
 img {
@@ -22,85 +19,108 @@ img {
     object-fit: fill;
 }
 
-
 .loader {
     /* border: solid 1px yellow; */
     width: 400px;
     height: 120px;
     margin: 275px 450px;
+    text-align: center;
 }
 
 .imagefloue {
     position: absolute;
     height: 100%;
     width: 100%;
-    backdrop-filter: blur(4px);
-    /* background-color: rgba(77, 74, 74, 0.4); */
+    backdrop-filter: blur(5px);
+    animation: defloute 1s ease-out 1.2s forwards;
+}
+
+@keyframes defloute {
+    0% {
+        backdrop-filter: blur(5px);
+    }
+
+    100% {
+        backdrop-filter: blur(0);
+    }
 }
 
 .rideau {
     position: relative;
     display: flex;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .rideau p {
     position: absolute;
     color: white;
-    flex-shrink: 0;
     background-color: rgb(88, 31, 31);
-    width: 400px;
-    /* height: 100%; */
+    width: 200px;
     text-align: center;
     font-size: 6em;
 }
 
 
-
 #gauche {
-    left: 50%;
-    animation: decaleGauche 3s ease-out 1 forwards;
+    background-image: url("/images/rideau-gauche.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: decaleGauche 3s ease-out 0.5s forwards;
 }
+
 
 @keyframes decaleGauche {
     0% {
-        margin-left: 100%;
+        transform: skew(0deg, 0deg) translateX(0%);
     }
 
-    /* 50% {
-        transform: translateX(-50%);
-    } */
+    20% {
+        transform: skew(-4deg, 0deg);
+    }
 
     100% {
-        margin-left: 0;
+        transform: skew(-10deg, 0deg) translateX(-105%);
     }
 }
 
-
 #droite {
-    left: -100%;
-    animation: decaleGauche 3s ease-out 1 forwards reverse;
+    left: 50%;
+    background-image: url("/images/rideau-droite.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    animation: decaleDroite 3s ease-out 0.5s forwards;
 }
 
 @keyframes decaleDroite {
     0% {
-        transform: translateX(101%);
+        transform: skew(0deg, 0deg) translateX(0%);
     }
 
-    /* 50% {
-        transform: translateX(150%);
-    } */
+    20% {
+        transform: skew(4deg, 0deg);
+    }
 
     100% {
-        transform: translateX(200%);
+        transform: skew(10deg, 0deg) translateX(105%);
     }
 }
 
-
-
-
-
 #fin {
-    color: white;
-    display: none;
+    color: rgb(192, 188, 188);
+    font-style: italic;
+    font-size: 1.52em;
+    /* animation: masque 1.5s ease-out 0.5s forwards; */
+    /* display: none; */
+}
+
+@keyframes masque {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
 }
