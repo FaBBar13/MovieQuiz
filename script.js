@@ -1,15 +1,21 @@
 //document.write('coucou aussi')
 
-let coteGauche = document.getElementById("gauche");
-let coteDroite = document.getElementById("droite");
+
 
 let divLoader = document.getElementById("loader");
-let divFin = document.getElementById('fin');
+let coteGauche = document.getElementById("gauche");
+let coteDroite = document.getElementById("droite");
+let divFooter = document.querySelector("footer");
+
+let zoneJeu = document.querySelector('.zonejeu');
 
 
 
 function afficheFin() {
     divLoader.style.display = "none";
+    zoneJeu.style.display = "flex";
+    divFooter.style.display = "block";
+
 }
 
-// document.onload = setTimeout(afficheFin, 3700);
+document.onload = setTimeout(afficheFin, 3700);

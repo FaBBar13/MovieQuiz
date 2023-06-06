@@ -9,59 +9,77 @@
 body {
     height: 100vh;
     background-color: black;
+    font-family: 'Poppins';
 }
 
-img {
+.loader {
+    // border: solid 1px yellow;
+    width: 80vw;
+    min-width: 300px;
+    max-width: 800px;
+    text-align: center;
+    margin: 35vh auto;
+}
+
+.loader p {
+    color: white;
+}
+
+#fin {
+    color: rgb(192, 188, 188);
+    font-style: italic;
+    font-size: 1.5em;
+    animation: masque 1.5s ease-out 0.5s forwards;
+}
+
+@keyframes masque {
+    from {
+        opacity: 1
+    }
+
+    to {
+        opacity: 0
+    }
+}
+
+.rideau {
+    // border: solid 1px red;
+    position: relative;
+    display: flex;
+    overflow: hidden;
+}
+
+.rideau img {
     width: 100%;
     height: 100%;
     object-position: center center;
     object-fit: fill;
 }
 
-.loader {
-    /* border: solid 1px yellow; */
-    width: 30vw;
-    min-width: 30vw;
-    height: 22vh;
-    min-height: 10vh;
-    /* margin: 275px 450px; */
-    margin: 25% auto;
-    text-align: center;
-
-}
-
 .imagefloue {
-    position: absolute;
+    // position: absolute;
     height: 100%;
     width: 100%;
-    backdrop-filter: blur(5px);
+    filter: blur(5px);
     animation: defloute 1.8s ease-out 1.2s forwards;
-
 }
 
 @keyframes defloute {
     0% {
-        backdrop-filter: blur(5px);
+        filter: blur(5px);
     }
 
     100% {
-        backdrop-filter: blur(0);
+        filter: blur(0);
     }
-}
-
-.rideau {
-    position: relative;
-    display: flex;
-    overflow: hidden;
 }
 
 .rideau p {
     position: absolute;
-    color: white;
     background-color: rgb(88, 31, 31);
-    width: 15vw;
+    width: 50%;
+    height: 100%;
     text-align: center;
-    font-size: 6em;
 }
 
 #gauche {
@@ -86,6 +104,7 @@ img {
     }
 }
 
+
 #droite {
     left: 50%;
     background-image: url("/images/rideau-droite.jpg");
@@ -109,26 +128,42 @@ img {
     }
 }
 
-#fin {
-    color: rgb(192, 188, 188);
-    font-style: italic;
-    font-size: 1.5em;
-    animation: masque 1.5s ease-out 0.5s forwards;
+.nav-mobile {
+    border: solid 1px red;
+    display: flex;
+    justify-content: space-between;
+    max-height: 70px;
 }
 
-@keyframes masque {
-    from {
-        opacity: 1
-    }
 
-    to {
-        opacity: 0
-    }
+
+.zonejeu {
+
+    // background-color: white;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    width: 100vw;
+    color: white;
+    background-image: url("/images/ocean.jpg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: cover;
 }
 
-/* 
-@media only screen and (max-width : 360px) {
-    body {
-        background-color: red;
+.infos {
+    min-height: 40vh;
+}
+
+footer {
+    color: white;
+    display: none;
+}
+
+@media screen and (min-width : 380px) {
+    .zonejeu {
+        background-color: lightgrey;
+        color: black;
     }
-} */
+}
