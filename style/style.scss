@@ -152,8 +152,8 @@ body {
     background-size: cover;
 }
 
-.infos {
-    min-height: 40vh;
+.zonejeu div {
+    border: solid 1px red;
 }
 
 footer {
@@ -165,5 +165,9 @@ footer {
     .zonejeu {
         background-color: lightgrey;
         color: black;
+    }
+
+    .nav-mobile {
+        display: none;
     }
 }
