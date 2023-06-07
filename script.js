@@ -9,8 +9,6 @@ let divFooter = document.querySelector("footer");
 
 let zoneJeu = document.querySelector('.zonejeu');
 
-
-
 function afficheFin() {
     divLoader.style.display = "none";
     zoneJeu.style.display = "flex";
@@ -19,3 +17,6 @@ function afficheFin() {
 }
 
 document.onload = setTimeout(afficheFin, 3700);
+
+/*  why ?  */
+let mySwiper = new Swiper ('.swiper-container');

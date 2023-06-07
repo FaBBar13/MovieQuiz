@@ -8,7 +8,7 @@
 
 body {
   height: 100vh;
-  background-color: black;
+  background-color: #111111;
   font-family: "Poppins";
 }
 
@@ -116,11 +116,31 @@ body {
     transform: skew(10deg, 0deg) translateX(120%);
   }
 }
+header {
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-height: 70px;
+}
+
+.logo {
+  height: 31px;
+  width: 23px;
+}
+
+.logo img {
+  height: 100%;
+  width: 100%;
+  background-color: transparent;
+}
+
 .nav-mobile {
   border: solid 1px red;
   display: flex;
   justify-content: space-between;
-  max-height: 70px;
+  max-height: 80px;
 }
 
 .zonejeu {
@@ -129,15 +149,28 @@ body {
   justify-content: space-between;
   min-height: 100vh;
   width: 100vw;
+  margin-top: 80px;
   color: white;
-  background-image: url("/images/ocean.jpg");
-  background-repeat: no-repeat;
-  background-position: left center;
-  background-size: cover;
+  background-color: transparent;
+}
+
+.infos {
+  border: solid 1px red;
+  height: 40vh;
 }
 
 .zonejeu div {
   border: solid 1px red;
+}
+
+.contenu {
+  max-height: 160px;
+  max-width: 106px;
+}
+
+.contenu img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 footer {
@@ -152,5 +185,12 @@ footer {
   }
   .nav-mobile {
     display: none;
+  }
+  .contenu {
+    max-height: 310px;
+    max-width: 210px;
+  }
+  .infos {
+    height: 50vh;
   }
 }/*# sourceMappingURL=style.css.map */
