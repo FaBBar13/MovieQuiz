@@ -30,75 +30,77 @@ const infoFilms =
     ' { "title": "field"    , "picture": "/images/field.jpg"    }]}}';
 
 
-// const monObjetJson = JSON.stringify({
-//     movies: {
-//         movie: [...(new Array(150))].map(x => ({
-//             title: 'Le titre',
-//             picture: 'image',
-//         })),
-// serie: {}
-
-//     }
-// });
-
-
-
 let objinfoFilms = JSON.parse(infoFilms);; //['beach', 'autumn', 'cat', 'dog', 'field', 'beach', 'autumn', 'cat', 'dog', 'field'];
 let tabFilmCherche = objinfoFilms.movies.movie;
-// console.log(tabFilmCherche);
-// console.log(tabFilmCherche.movies.movie); // tabFilmCherche.movies.movie[0].title
 
-// ici expansion : permet de pointer vers la clé plus facilement , surtout si plusieurs clés dans
-// le tableau ( séries à mettre par exemple)
-//let tabmovie = tabFilmCherche.movies.movie;
-//console.log(tabmovie);
-// console.log(movie[1].picture)
+let objfilmsTrouves = JSON.parse(localStorage.getItem("trouve"));
+console.log(objfilmsTrouves);
 
-// const  movie  = tabFilmCherche.movies.movie; 
-// const { title, picture } = movie[0]; -> expansion aussi sur les clés de 'movie' et avoir les proprietés
-// console.log(title, picture);
+if (objfilmsTrouves === null) {
+    let tabFilmTrouve = {};
+    localStorage.setItem("trouve", JSON.stringify(tabFilmTrouve));
+}
+// let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
 
-let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
 
 let divFilmCherche = document.getElementById('filmcherche');
 let divFilmTrouve = document.getElementById('filmtrouve');
 
 
-function genereImages(root, tableauRoot) {
+function genereImages(root, tableauRoot , typeRoot ) {
+
+    // alert(root.indexOf('cherche')); => why ?
+    
+    //  typeRoot : FC , FT , SC , ST
+
 
     for (i = 0; i < tableauRoot.length; i++) {
         // let wrapFilm = document.getElementById("wrapperfilm");
 
-        let divfilm = document.createElement("div");
-        let imgFilm = document.createElement("img");
+        let divFilm = document.createElement("div");
+        divFilm.className = "swiper-slide";
+        
+        let divInterneFilm = document.createElement("div");
+        divInterneFilm.className = "div-interne";
+        
 
-        divfilm.className = "swiper-slide";
+        let titFilm = document.createElement("a");
+        titFilm.innerHTML = "slide + " + i;
+        //addEventListener.
 
         // imgFilm.src = "/images/" + tableauRoot[i] + ".jpg";
         // imgFilm.src = tabFilmCherche.movies.movie[i].picture;
+        let imgFilm = document.createElement("img");
         imgFilm.src = tableauRoot[i].picture;
 
-        //divfilm.appendChild(titfilm);
-        divfilm.appendChild(imgFilm);
+        // let btnRep = document.createElement("button");
+        // btnRep.innerHTML = "Répondre";
+        // btnRep.className = "bouton-slider";
+        // divFilm.appendChild(btnRep);
 
-        root.appendChild(divfilm);
+        divInterneFilm.appendChild(titFilm);
+        divInterneFilm.appendChild(imgFilm);
+        
+        divFilm.appendChild(divInterneFilm);
+        root.appendChild(divFilm);
     };
 
-    divFilmCherche.classList.add('cherche');
-
+    if (typeRoot === 'FC') {
+        divFilmCherche.classList.add('cherche');
+    }
+    
+    
     return new Swiper(root.parentElement, {
-
+        grabCursor : true,
         loop: true,
-        // autoplay: {
-        //     delay: 2000,
-        //     // stoppe le swipe auto si action manuelle
-        //     disableOnInteraction: true
-        // },
+        
         slidesPerView: 3,
+        centeredSlides : true,
         spaceBetween: 10,
         breakpoints: {
             640: {
-                slidesPerView: 3,
+                slidesPerView: 4,
+                centeredSlides : true,
                 spaceBetween: 15
             },
             768: {
@@ -122,7 +124,6 @@ function genereImages(root, tableauRoot) {
 
     });
 
-
 };
 
 //genereImages(document.querySelector('.swiper  .swiper-wrapper'));
@@ -133,5 +134,5 @@ function genereImages(root, tableauRoot) {
 //genereImages(divFilmCherche, tabFilmCherche.movies.movie);
 //
 
-genereImages(divFilmCherche, tabFilmCherche);
-genereImages(divFilmTrouve, tabFilmTrouve);
+genereImages(divFilmCherche, tabFilmCherche , 'FC' );
+// genereImages(divFilmTrouve, tabFilmTrouve);
