@@ -75,15 +75,14 @@ tabFilmCherche.forEach(item => {
 // console.log(tabFilmCherche);
 // console.log(tabFilmCherche.movies.movie); // tabFilmCherche.movies.movie[0].title
 
-// ici expansion : permet de pointer vers la clé plus facilement , surtout si plusieurs clés dans
-// le tableau ( séries à mettre par exemple)
-//let tabmovie = tabFilmCherche.movies.movie;
-//console.log(tabmovie);
-// console.log(movie[1].picture)
+let objfilmsTrouves = JSON.parse(localStorage.getItem("trouve"));
+console.log(objfilmsTrouves);
 
-// const  movie  = tabFilmCherche.movies.movie; 
-// const { title, picture } = movie[0]; -> expansion aussi sur les clés de 'movie' et avoir les proprietés
-// console.log(title, picture);
+if (objfilmsTrouves === null) {
+    let tabFilmTrouve = {};
+    localStorage.setItem("trouve", JSON.stringify(tabFilmTrouve));
+}
+// let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
 
 //let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
 
@@ -155,7 +154,10 @@ function genereImages(root, tableauRoot) {
         }
     };
 
-    divFilmCherche.classList.add('cherche');
+    if (typeRoot === 'FC') {
+        divFilmCherche.classList.add('cherche');
+    }
+
 
     return new Swiper(root.parentElement, {
 
@@ -192,7 +194,6 @@ function genereImages(root, tableauRoot) {
 
 
     });
-
 
 };
 
