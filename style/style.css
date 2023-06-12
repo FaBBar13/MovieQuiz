@@ -19,7 +19,6 @@ body {
   text-align: center;
   margin: 35vh auto;
 }
-
 .loader p {
   color: white;
 }
@@ -137,14 +136,9 @@ header {
 }
 
 .nav-mobile {
-  border: solid 1px red;
   display: flex;
   justify-content: space-between;
   max-height: 80px;
-}
-
-h2 {
-  border: solid 1px red;
 }
 
 .zonejeu {
@@ -169,13 +163,12 @@ h2 {
 }
 
 .contenu {
-  border: solid 1px red;
   margin-bottom: 10px;
 }
 
 .contenu img {
   height: 180px;
-  aspect-ratio: 160/240;
+  aspect-ratio: 2/3;
   -o-object-position: center center;
      object-position: center center;
   -o-object-fit: cover;
@@ -198,6 +191,34 @@ h2 {
   filter: grayscale(1);
 }
 
+#modale {
+  visibility: hidden;
+  background-color: white;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 5;
+}
+
+#modale .image {
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/ocean.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: fill;
+}
+
+.reponse {
+  border: solid 1px yellow;
+  display: flex;
+}
+
 footer {
   color: white;
   display: none;
@@ -216,5 +237,8 @@ footer {
   }
   .infos {
     height: 60vh;
+  }
+  .reponse {
+    flex-direction: row;
   }
 }/*# sourceMappingURL=style.css.map */

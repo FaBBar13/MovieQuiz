@@ -1,0 +1,19 @@
+{
+    "movies": {
+        "movie": [
+            {
+                "id": "F1",
+                "title": "Beach",
+                "picture": "/images/beach.jpg"
+            },
+            {
+                "id": "F2",
+                "title": "Autumn",
+                "picture": "/images/autumn.jpg"
+            }
+        ]
+    },
+    "series": {
+        "serie": []
+    }
+}

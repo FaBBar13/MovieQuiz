@@ -1,4 +1,3 @@
-//document.write('coucou aussi')
 
 
 
@@ -16,6 +15,30 @@ function afficheFin() {
 
 }
 
+
+
+
+
+
+// stock  en memoire le fichier de base si appellé de nouveau
+let cached;
+
+// c'est le point d'entrée aux données du fichier json
+async function getData() {
+    // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
+    return cached ??= await fetch('./info.json') // ca retourne une réponse
+        .then(resp => resp.json()); // ca retourne le json parsé en object
+}
+
+getData().then(data => {
+
+    console.log(data);
+
+
+
+
+});
+
 // document.onload = setTimeout(afficheFin, 3700);
 
 
@@ -23,28 +46,32 @@ function afficheFin() {
 
 const infoFilms =
     ' {"movies": { "movie": [' +
-    ' { "title": "Beach"    , "picture": "/images/beach.jpg"    },' +
-    ' { "title": "Autumn"   , "picture": "/images/autumn.jpg"   },' +
-    ' { "title": "cat"      , "picture": "/images/cat.jpg"      },' +
-    ' { "title": "dog"      , "picture": "/images/dog.jpg"      },' +
-    ' { "title": "field"    , "picture": "/images/field.jpg"    }]}}';
+    ' { "idFilm": "F1" ,"title": "Beach"    , "picture": "/images/beach.jpg"    },' +
+    ' { "idFilm": "F2" ,"title": "Autumn"   , "picture": "/images/autumn.jpg"   },' +
+    ' { "idFilm": "F3" ,"title": "cat"      , "picture": "/images/cat.jpg"      },' +
+    ' { "idFilm": "F4" ,"title": "dog"      , "picture": "/images/dog.jpg"      },' +
+    ' { "idFilm": "F5" ,"title": "field"    , "picture": "/images/field.jpg"    }]}}';
 
 
-// const monObjetJson = JSON.stringify({
-//     movies: {
-//         movie: [...(new Array(150))].map(x => ({
-//             title: 'Le titre',
-//             picture: 'image',
-//         })),
-// serie: {}
-
-//     }
-// });
 
 
 
 let objinfoFilms = JSON.parse(infoFilms);; //['beach', 'autumn', 'cat', 'dog', 'field', 'beach', 'autumn', 'cat', 'dog', 'field'];
 let tabFilmCherche = objinfoFilms.movies.movie;
+
+// let tabSerieCherche = objinfoFilms.series.serie;/
+
+let map = new Map();
+
+tabFilmCherche.forEach(item => {
+    map.set(item.idFilm, item);
+});
+
+
+//console.log(map);
+
+//console.debug(tabFilmCherche.find(i => i.idFilm == 'F2'));
+
 // console.log(tabFilmCherche);
 // console.log(tabFilmCherche.movies.movie); // tabFilmCherche.movies.movie[0].title
 
@@ -58,65 +85,109 @@ let tabFilmCherche = objinfoFilms.movies.movie;
 // const { title, picture } = movie[0]; -> expansion aussi sur les clés de 'movie' et avoir les proprietés
 // console.log(title, picture);
 
-let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
+//let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
 
 let divFilmCherche = document.getElementById('filmcherche');
 let divFilmTrouve = document.getElementById('filmtrouve');
 
 
+// let tabTrouve = [];
+
+
+let objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
+
+
+// console.log(objfilmsTrouves);
+
+if (objDejaTrouves === null) {
+    console.log('pas de local');
+    let tabTrouve = [];
+    tabTrouve.push("F1");
+    tabTrouve.push("F4");
+    localStorage.setItem("trouve", JSON.stringify(tabTrouve));
+} else {
+    console.log('local = ' + JSON.parse(localStorage.getItem("trouve")));
+};
+
+
+
+
 function genereImages(root, tableauRoot) {
+
+    // let dejaTrouve = "";
+
+    // dejaTrouve = localStorage.getItem('dejaTrouve');
+    // if (dejaTrouve === null) {
+    //     console.log(' pas de local ')
+    //     localStorage.setItem("dejaTrouve", JSON.stringify(tabTrouve));
+    // }
+    // else {
+    //     tabTrouve = JSON.parse(tabTrouve);
+    // };
+    //console.log(dejaTrouve.length);
 
     for (i = 0; i < tableauRoot.length; i++) {
         // let wrapFilm = document.getElementById("wrapperfilm");
 
-        let divfilm = document.createElement("div");
-        let imgFilm = document.createElement("img");
+        if (!objDejaTrouves.includes(tableauRoot[i].idFilm)) {
 
-        divfilm.className = "swiper-slide";
+            let divFilm = document.createElement("div");
+            let imgFilm = document.createElement("img");
+            let idFilm = document.createElement("h3");
 
-        // imgFilm.src = "/images/" + tableauRoot[i] + ".jpg";
-        // imgFilm.src = tabFilmCherche.movies.movie[i].picture;
-        imgFilm.src = tableauRoot[i].picture;
 
-        //divfilm.appendChild(titfilm);
-        divfilm.appendChild(imgFilm);
+            divFilm.className = "swiper-slide";
+            divFilm.dataset.id = tableauRoot[i].idFilm;
 
-        root.appendChild(divfilm);
+            // imgFilm.src = "/images/" + tableauRoot[i] + ".jpg";
+            // imgFilm.src = tabFilmCherche.movies.movie[i].picture;
+            imgFilm.src = tableauRoot[i].picture;
+
+            idFilm.innerText = tableauRoot[i].idFilm;
+
+            //console.log(idFilm);
+
+            divFilm.appendChild(imgFilm);
+            divFilm.appendChild(idFilm);
+
+            divFilm.addEventListener('click', e => afficheModale(divFilm));
+            root.appendChild(divFilm);
+        }
     };
 
     divFilmCherche.classList.add('cherche');
 
     return new Swiper(root.parentElement, {
 
+        direction: "horizontal",
         loop: true,
+        grabCursor: true,
+        centeredSlides: true,
         // autoplay: {
         //     delay: 2000,
         //     // stoppe le swipe auto si action manuelle
         //     disableOnInteraction: true
         // },
         slidesPerView: 3,
-        spaceBetween: 10,
+        spaceBetween: 3,
         breakpoints: {
-            640: {
-                slidesPerView: 3,
-                spaceBetween: 15
-            },
+            // 640: {
+            //     slidesPerView: 3,
+
+            // },
             768: {
                 slidesPerView: 4,
-                spaceBetween: 20
+
             },
             992: {
                 slidesPerView: 6,
-                spaceBetween: 20
+
             },
             1200: {
                 slidesPerView: 8,
-                spaceBetween: 20
+
             },
-            1400: {
-                slidesPerView: 10,
-                spaceBetween: 20
-            }
+
         },
 
 
@@ -125,13 +196,52 @@ function genereImages(root, tableauRoot) {
 
 };
 
-//genereImages(document.querySelector('.swiper  .swiper-wrapper'));
-//genereImages(document.querySelector('.swiper .grise .swiper-wrapper'));
+let reponseSaisie = document.getElementById("reponse");
+let reponseATrouver = "";
 
-// console.log(document.querySelector('.swiper .swiper-wrapper'))
+function afficheModale(elem) {
 
-//genereImages(divFilmCherche, tabFilmCherche.movies.movie);
-//
+    document.getElementById("reponse").value = "";
+    let ident = elem.dataset.id;
+
+    let item = map.get(ident);
+
+    let modale = document.getElementById("modale");
+    let imgModal = document.getElementById("image");
+    reponseATrouver = item.title;
+
+    // let reponse = document.getElementById("reponse").value;
+    // reponse = '';
+    modale.style.visibility = "visible";
+
+
+    let imgSrc = item.picture;
+    //console.log(imgSrc);
+    imgModal.style.backgroundImage = `url(${imgSrc})`;
+    //modale.style.backgroundImage = `url(${imgSrc})`;
+
+    // Masquer la div si clique en dehors ?
+    // modale.addEventListener("click", function () {
+    //     modale.style.visibility = "hidden";
+    // });
+
+    //let titre = item.title;
+    //console.log('tit=' + titre + ' ' + reponse);
+
+}
+
+
+
+
 
 genereImages(divFilmCherche, tabFilmCherche);
-genereImages(divFilmTrouve, tabFilmTrouve);
+//genereImages(divFilmTrouve, tabFilmTrouve);
+
+
+function verifReponse() {
+    let reponse = document.getElementById("reponse").value;
+
+    alert('=>' + reponse + ' pour ' + reponseATrouver);
+
+    // if (reponse === )
+}
