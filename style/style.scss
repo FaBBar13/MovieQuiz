@@ -205,7 +205,7 @@ header {
 
 .contenu img {
     height: 180px;
-    aspect-ratio: 160/240;
+    aspect-ratio: 2/3;
     // max-width: 100%;
     object-position: center center;
     object-fit: cover;
@@ -286,7 +286,6 @@ header {
     border: solid 1px yellow;
     display: flex;
     //flex-direction: column;
-
 
 }
 

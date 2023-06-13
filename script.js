@@ -14,32 +14,29 @@ function afficheFin() {
     divFooter.style.display = "block";
 
 }
-
-
-
-
-
-
-// stock  en memoire le fichier de base si appellé de nouveau
-let cached;
-
-// c'est le point d'entrée aux données du fichier json
-async function getData() {
-    // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
-    return cached ??= await fetch('./info.json') // ca retourne une réponse
-        .then(resp => resp.json()); // ca retourne le json parsé en object
-}
-
-getData().then(data => {
-
-    console.log(data);
-
-
-
-
-});
-
 // document.onload = setTimeout(afficheFin, 3700);
+
+
+
+
+
+// // stock  en memoire le fichier de base si appellé de nouveau
+// let cached;
+
+// // c'est le point d'entrée aux données du fichier json
+// async function getData() {
+//     // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
+//     return cached ??= await fetch('./info.json') // ca retourne une réponse
+//         .then(resp => resp.json()); // ca retourne le json parsé en object
+// }
+
+// getData().then(data => {
+
+//     console.log(data);
+
+// });
+
+
 
 
 
@@ -56,9 +53,10 @@ const infoFilms =
 
 
 
-let objinfoFilms = JSON.parse(infoFilms);; //['beach', 'autumn', 'cat', 'dog', 'field', 'beach', 'autumn', 'cat', 'dog', 'field'];
+let objinfoFilms = JSON.parse(infoFilms);
 let tabFilmCherche = objinfoFilms.movies.movie;
-
+console.log ('tabfilmcherche')
+console.log(tabFilmCherche);
 // let tabSerieCherche = objinfoFilms.series.serie;/
 
 let map = new Map();
@@ -75,14 +73,13 @@ tabFilmCherche.forEach(item => {
 // console.log(tabFilmCherche);
 // console.log(tabFilmCherche.movies.movie); // tabFilmCherche.movies.movie[0].title
 
-let objfilmsTrouves = JSON.parse(localStorage.getItem("trouve"));
-console.log(objfilmsTrouves);
+// let objfilmsTrouves = JSON.parse(localStorage.getItem("trouve"));
+// console.log(objfilmsTrouves);
 
-if (objfilmsTrouves === null) {
-    let tabFilmTrouve = {};
-    localStorage.setItem("trouve", JSON.stringify(tabFilmTrouve));
-}
-// let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
+// if (objfilmsTrouves === null) {
+//     let tabFilmTrouve = {};
+//     localStorage.setItem("trouve", JSON.stringify(tabFilmTrouve));
+// }
 
 //let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
 
@@ -101,11 +98,13 @@ let objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
 if (objDejaTrouves === null) {
     console.log('pas de local');
     let tabTrouve = [];
-    tabTrouve.push("F1");
-    tabTrouve.push("F4");
+    //tabTrouve.push("F1");
+    //tabTrouve.push("F4");
     localStorage.setItem("trouve", JSON.stringify(tabTrouve));
+    objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
 } else {
-    console.log('local = ' + JSON.parse(localStorage.getItem("trouve")));
+    //console.log('local = ' + JSON.parse(localStorage.getItem("trouve")));
+    objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
 };
 
 
@@ -113,17 +112,6 @@ if (objDejaTrouves === null) {
 
 function genereImages(root, tableauRoot) {
 
-    // let dejaTrouve = "";
-
-    // dejaTrouve = localStorage.getItem('dejaTrouve');
-    // if (dejaTrouve === null) {
-    //     console.log(' pas de local ')
-    //     localStorage.setItem("dejaTrouve", JSON.stringify(tabTrouve));
-    // }
-    // else {
-    //     tabTrouve = JSON.parse(tabTrouve);
-    // };
-    //console.log(dejaTrouve.length);
 
     for (i = 0; i < tableauRoot.length; i++) {
         // let wrapFilm = document.getElementById("wrapperfilm");
@@ -133,7 +121,6 @@ function genereImages(root, tableauRoot) {
             let divFilm = document.createElement("div");
             let imgFilm = document.createElement("img");
             let idFilm = document.createElement("h3");
-
 
             divFilm.className = "swiper-slide";
             divFilm.dataset.id = tableauRoot[i].idFilm;
@@ -154,9 +141,9 @@ function genereImages(root, tableauRoot) {
         }
     };
 
-    if (typeRoot === 'FC') {
-        divFilmCherche.classList.add('cherche');
-    }
+    
+         divFilmCherche.classList.add('cherche');
+    
 
 
     return new Swiper(root.parentElement, {
@@ -217,17 +204,16 @@ function afficheModale(elem) {
 
 
     let imgSrc = item.picture;
-    //console.log(imgSrc);
+    
     imgModal.style.backgroundImage = `url(${imgSrc})`;
-    //modale.style.backgroundImage = `url(${imgSrc})`;
+    
 
     // Masquer la div si clique en dehors ?
     // modale.addEventListener("click", function () {
     //     modale.style.visibility = "hidden";
     // });
 
-    //let titre = item.title;
-    //console.log('tit=' + titre + ' ' + reponse);
+
 
 }
 

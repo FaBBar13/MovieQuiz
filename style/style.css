@@ -168,7 +168,7 @@ header {
 
 .contenu img {
   height: 180px;
-  aspect-ratio: 160/240;
+  aspect-ratio: 2/3;
   -o-object-position: center center;
      object-position: center center;
   -o-object-fit: cover;

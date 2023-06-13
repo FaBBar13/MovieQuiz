@@ -1,0 +1,108 @@
+
+
+{
+    "medias": {
+        "movie": [
+            {
+                "title": "Gladiator",
+                "picture": "./ressources/movies/gladiator.webp"
+            },
+            {
+                "title": "La liste de Schindler",
+                "picture": "./ressources/movies/la-liste-de-schindler.jpg"
+            },
+            {
+                "title": "Dreamcatcher",
+                "picture": "dreamcatcher.jpg"
+            },
+            {
+                "title": "Hot shots",
+                "picture": "hotshot.jpg"
+            },
+            {
+                "title": "Minority Report",
+                "picture": "minority-report.png"
+            },
+            {
+                "title": "Alien Covenant",
+                "picture": "alien-covenant.jpeg"
+            }
+        ],
+        "series": [
+            {
+                "title": "FRIENDS",
+                "picture": ""
+            }
+        ]
+    }
+}
+---------------
+V1
+fetch('./movies.JSON')
+    .then(res => res.json()) // 
+    .then(data => {          //
+        console.log(data);
+    })
+
+	
+V2
+// garde le résultat en mémoire dans cette variable si la fonction est appelée plusieurs fois
+// ! ne pas l'utiliser directement, elle va etre assignée dans le futur
+let cached;
+
+// c'est le point d'entrée aux données du fichier json
+async function getData()
+{
+    // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
+    return cached ??= await fetch('./monfichier.json') // ca retourne une réponse
+        .then(resp => resp.json()); // ca retourne le json parsé en object
+}
+--------
+
+let gladiatorSRC = document.querySelector('.gladiator');
+
+async function extractDataJson() {
+    const response = await fetch('./movies.JSON');
+    const data = await response.json();
+    const path = data.medias.movie[0].picture;
+    gladiator.src = path
+}
+
+extractDataJson();
+fetch() utilise le live server pour récupérer les données du fichier JSON, stocké indépendamment du script, et le parcours en tant qu'objet.
+
+
+
+// fait le fetch
+getData().then(data =>
+{
+    gladiator.src = data.medias.movie[0].picture;
+    // .... le reste
+});
+
+btn.addEventListener("click", () =>
+{
+
+    //récupère la valeur chargée en mémoire
+    getData().then(data =>
+    {
+        // eg: change l'image
+        gladiator.src = data.medias.movie[1].picture;
+        // .... le reste
+    });
+
+});
+
+///
+const swiper = new Swiper('.swiper', {
+
+    grabCursor: true,
+    slidesPerView: "auto",
+    freeMode: {
+        enabled: true,
+        sticky: true,
+    },
+    mousewheel: {
+        releaseOnEdges: true,
+    },
+});
