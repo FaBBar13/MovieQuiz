@@ -55,7 +55,7 @@ const infoFilms =
 
 let objinfoFilms = JSON.parse(infoFilms);
 let tabFilmCherche = objinfoFilms.movies.movie;
-console.log ('tabfilmcherche')
+console.log('tabfilmcherche')
 console.log(tabFilmCherche);
 // let tabSerieCherche = objinfoFilms.series.serie;/
 
@@ -98,8 +98,8 @@ let objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
 if (objDejaTrouves === null) {
     console.log('pas de local');
     let tabTrouve = [];
-    //tabTrouve.push("F1");
-    //tabTrouve.push("F4");
+    // tabTrouve.push("F1");
+    // tabTrouve.push("F4");
     localStorage.setItem("trouve", JSON.stringify(tabTrouve));
     objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
 } else {
@@ -141,9 +141,8 @@ function genereImages(root, tableauRoot) {
         }
     };
 
-    
-         divFilmCherche.classList.add('cherche');
-    
+    divFilmCherche.classList.add('cherche');
+
 
 
     return new Swiper(root.parentElement, {
@@ -204,9 +203,9 @@ function afficheModale(elem) {
 
 
     let imgSrc = item.picture;
-    
+
     imgModal.style.backgroundImage = `url(${imgSrc})`;
-    
+
 
     // Masquer la div si clique en dehors ?
     // modale.addEventListener("click", function () {

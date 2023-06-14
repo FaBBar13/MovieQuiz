@@ -20,121 +20,7 @@ body {
 
 }
 
-.loader {
-    // border: solid 1px yellow;
-    width: 80vw;
-    min-width: 300px;
-    max-width: 800px;
-    text-align: center;
-    margin: 35vh auto;
-
-    p {
-        color: white;
-    }
-}
-
-#fin {
-    color: rgb(192, 188, 188);
-    font-style: italic;
-    font-size: 1.5em;
-    animation: masque 1.5s ease-out 0.5s forwards;
-}
-
-@keyframes masque {
-    from {
-        opacity: 1
-    }
-
-    to {
-        opacity: 0
-    }
-}
-
-.rideau {
-    // border: solid 1px red;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-}
-
-.rideau img {
-    width: 100%;
-    height: 100%;
-    object-position: center center;
-    object-fit: fill;
-}
-
-.imagefloue {
-    // position: absolute;
-    height: 100%;
-    width: 100%;
-    filter: blur(5px);
-    animation: defloute 1.8s ease-out 1.2s forwards;
-}
-
-@keyframes defloute {
-    0% {
-        filter: blur(5px);
-    }
-
-    100% {
-        filter: blur(0);
-    }
-}
-
-.rideau p {
-    position: absolute;
-    background-color: rgb(88, 31, 31);
-    width: 50%;
-    height: 100%;
-    text-align: center;
-}
-
-#gauche {
-    background-image: url("/images/rideau-gauche.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    animation: decaleGauche 3s ease-out 0.5s forwards;
-}
-
-@keyframes decaleGauche {
-    0% {
-        transform: skew(0deg, 0deg) translateX(0%);
-    }
-
-    20% {
-        transform: skew(-4deg, 0deg);
-    }
-
-    100% {
-        transform: skew(-10deg, 0deg) translateX(-120%);
-    }
-}
-
-
-#droite {
-    left: 50%;
-    background-image: url("/images/rideau-droite.jpg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    animation: decaleDroite 3s ease-out 0.5s forwards;
-}
-
-@keyframes decaleDroite {
-    0% {
-        transform: skew(0deg, 0deg) translateX(0%);
-    }
-
-    20% {
-        transform: skew(4deg, 0deg);
-    }
-
-    100% {
-        transform: skew(10deg, 0deg) translateX(120%);
-    }
-}
+@import "_loader.scss";
 
 header {
     color: white;
@@ -201,15 +87,17 @@ header {
 .contenu {
     border: solid 1px red;
     margin-bottom: 10px;
+
+    img {
+        height: 180px;
+        aspect-ratio: 2/3;
+        // max-width: 100%;
+        object-position: center center;
+        object-fit: cover;
+    }
+
 }
 
-.contenu img {
-    height: 180px;
-    aspect-ratio: 2/3;
-    // max-width: 100%;
-    object-position: center center;
-    object-fit: cover;
-}
 
 .swiper-wrapper {
     display: flex;
@@ -260,13 +148,8 @@ header {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 40vh;
     z-index: 5;
-
-    // background-image: url("/images/ocean.jpg");
-    // background-repeat: no-repeat;
-    // background-position: center center;
-    // background-size: cover;
 
 }
 
@@ -276,9 +159,9 @@ header {
 
     width: 100%;
     height: 100%;
-    background-image: url("/images/ocean.jpg");
+    // background-image: url("/images/ocean.jpg");
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center center;
     background-size: fill;
 }
 
@@ -319,8 +202,11 @@ footer {
     }
 
     .reponse {
-
         flex-direction: row;
+    }
+
+    #modale {
+        height: 60vh;
     }
 
 

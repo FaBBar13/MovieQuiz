@@ -165,7 +165,6 @@ header {
   border: solid 1px red;
   margin-bottom: 10px;
 }
-
 .contenu img {
   height: 180px;
   aspect-ratio: 2/3;
@@ -217,16 +216,15 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: 40vh;
   z-index: 5;
 }
 
 #modale .image {
   width: 100%;
   height: 100%;
-  background-image: url("/images/ocean.jpg");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: center center;
   background-size: fill;
 }
 
@@ -258,5 +256,8 @@ footer {
   }
   .reponse {
     flex-direction: row;
+  }
+  #modale {
+    height: 60vh;
   }
 }/*# sourceMappingURL=style.css.map */
