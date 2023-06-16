@@ -16,25 +16,21 @@ function afficheFin() {
 }
 // document.onload = setTimeout(afficheFin, 3700);
 
+// stock  en memoire le fichier de base si appellé de nouveau
+let cached;
+//const infoFilms = {};
+// c'est le point d'entrée aux données du fichier json
+async function getData() {
+    // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
+    return cached ??= await fetch('infos.json') // ca retourne une réponse
+        .then(resp => resp.json()); // ca retourne le json parsé en object
+}
 
+getData().then(data => {
+    //infoFilms = data;
+    console.log(data);
 
-
-
-// // stock  en memoire le fichier de base si appellé de nouveau
-// let cached;
-
-// // c'est le point d'entrée aux données du fichier json
-// async function getData() {
-//     // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
-//     return cached ??= await fetch('./info.json') // ca retourne une réponse
-//         .then(resp => resp.json()); // ca retourne le json parsé en object
-// }
-
-// getData().then(data => {
-
-//     console.log(data);
-
-// });
+});
 
 
 
@@ -141,7 +137,7 @@ function genereImages(root, tableauRoot) {
         }
     };
 
-    divFilmCherche.classList.add('cherche');
+    // divFilmCherche.classList.add('cherche');
 
 
 
@@ -183,6 +179,7 @@ function genereImages(root, tableauRoot) {
 
 };
 
+
 let reponseSaisie = document.getElementById("reponse");
 let reponseATrouver = "";
 
@@ -220,7 +217,7 @@ function afficheModale(elem) {
 
 
 
-genereImages(divFilmCherche, tabFilmCherche);
+//genereImages(divFilmCherche, tabFilmCherche);
 //genereImages(divFilmTrouve, tabFilmTrouve);
 
 
