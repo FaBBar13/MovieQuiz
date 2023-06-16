@@ -92,7 +92,7 @@ header {
         height: 180px;
         aspect-ratio: 2/3;
         // max-width: 100%;
-        object-position: center center;
+        //object-position: center center;
         object-fit: cover;
     }
 
@@ -110,6 +110,7 @@ header {
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        // border: solid 1px white;
 
     }
 }
@@ -129,7 +130,7 @@ header {
 
 .swiper-slide:hover {
     scale: 1.1;
-    border: solid 1px white;
+    //border: solid 1px white;
 }
 
 .cherche {
@@ -162,7 +163,7 @@ header {
     // background-image: url("/images/ocean.jpg");
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: fill;
+    //background-size: contain;
 }
 
 .reponse {
@@ -192,8 +193,12 @@ footer {
         display: flex;
     }
 
-    .contenu img {
-        height: 240px;
+    .contenu {
+
+        img {
+            height: 240px;
+        }
+
         // max-width: 210px;
     }
 

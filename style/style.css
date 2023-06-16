@@ -168,8 +168,6 @@ header {
 .contenu img {
   height: 180px;
   aspect-ratio: 2/3;
-  -o-object-position: center center;
-     object-position: center center;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -199,7 +197,6 @@ header {
 
 .swiper-slide:hover {
   scale: 1.1;
-  border: solid 1px white;
 }
 
 .cherche {
@@ -225,7 +222,6 @@ header {
   height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: fill;
 }
 
 .reponse {

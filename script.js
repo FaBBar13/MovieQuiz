@@ -16,198 +16,191 @@ function afficheFin() {
 }
 // document.onload = setTimeout(afficheFin, 3700);
 
-// stock  en memoire le fichier de base si appellé de nouveau
-let cached;
-//const infoFilms = {};
-// c'est le point d'entrée aux données du fichier json
-async function getData() {
-    // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
-    return cached ??= await fetch('infos.json') // ca retourne une réponse
-        .then(resp => resp.json()); // ca retourne le json parsé en object
-}
+/* */
 
-getData().then(data => {
-    //infoFilms = data;
-    console.log(data);
-
-});
-
-
-
-
-
-
-const infoFilms =
-    ' {"movies": { "movie": [' +
-    ' { "idFilm": "F1" ,"title": "Beach"    , "picture": "/images/beach.jpg"    },' +
-    ' { "idFilm": "F2" ,"title": "Autumn"   , "picture": "/images/autumn.jpg"   },' +
-    ' { "idFilm": "F3" ,"title": "cat"      , "picture": "/images/cat.jpg"      },' +
-    ' { "idFilm": "F4" ,"title": "dog"      , "picture": "/images/dog.jpg"      },' +
-    ' { "idFilm": "F5" ,"title": "field"    , "picture": "/images/field.jpg"    }]}}';
-
-
-
-
-
-let objinfoFilms = JSON.parse(infoFilms);
-let tabFilmCherche = objinfoFilms.movies.movie;
-console.log('tabfilmcherche')
-console.log(tabFilmCherche);
-// let tabSerieCherche = objinfoFilms.series.serie;/
-
-let map = new Map();
-
-tabFilmCherche.forEach(item => {
-    map.set(item.idFilm, item);
-});
-
-
-//console.log(map);
-
-//console.debug(tabFilmCherche.find(i => i.idFilm == 'F2'));
-
-// console.log(tabFilmCherche);
-// console.log(tabFilmCherche.movies.movie); // tabFilmCherche.movies.movie[0].title
-
-// let objfilmsTrouves = JSON.parse(localStorage.getItem("trouve"));
-// console.log(objfilmsTrouves);
-
-// if (objfilmsTrouves === null) {
-//     let tabFilmTrouve = {};
-//     localStorage.setItem("trouve", JSON.stringify(tabFilmTrouve));
-// }
-
-//let tabFilmTrouve = ['eagle', 'flowers', 'forest', 'cthulhu1', 'eagle', 'flowers', 'forest', 'cthulhu1', 'flowers', 'forest',];
-
-let divFilmCherche = document.getElementById('filmcherche');
-let divFilmTrouve = document.getElementById('filmtrouve');
-
-
-// let tabTrouve = [];
-
-
-let objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
-
-
-// console.log(objfilmsTrouves);
-
-if (objDejaTrouves === null) {
+let filmDejaTrouves = JSON.parse(localStorage.getItem("filmtrouve"));
+if (filmDejaTrouves === null) {
     console.log('pas de local');
     let tabTrouve = [];
     // tabTrouve.push("F1");
     // tabTrouve.push("F4");
-    localStorage.setItem("trouve", JSON.stringify(tabTrouve));
-    objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
-} else {
-    //console.log('local = ' + JSON.parse(localStorage.getItem("trouve")));
-    objDejaTrouves = JSON.parse(localStorage.getItem("trouve"));
+
+    localStorage.setItem("filmtrouve", JSON.stringify(tabTrouve));
+    filmDejaTrouves = JSON.parse(localStorage.getItem("filmtrouve"));
+
+};
+console.log(filmDejaTrouves);
+
+let serieDejaTrouves = JSON.parse(localStorage.getItem("serietrouve"));
+if (serieDejaTrouves === null) {
+    console.log('pas de local');
+    let tabTrouve = [];
+    // tabTrouve.push("S2");
+    // tabTrouve.push("S3");
+
+    localStorage.setItem("serietrouve", JSON.stringify(tabTrouve));
+    serieDejaTrouves = JSON.parse(localStorage.getItem("serietrouve"));
 };
 
 
 
+/* */
+let divFilmCherche = document.getElementById('filmcherche');
+let divFilmTrouve = document.getElementById('filmtrouve');
 
-function genereImages(root, tableauRoot) {
+let tabFilmCherche = {};
+let tabSerieCherche = {};
+
+let divSerieCherche = document.getElementById('seriecherche');
+let divSerieTrouve = document.getElementById('serietrouve');
+
+let tabFilmTrouve = {};
+let tabSerieTrouve = {};
+// stock  en memoire le fichier de base si appellé de nouveau
+let cached;
+
+// c'est le point d'entrée aux données du fichier json
+async function getData() {
+    // retourne la valeur cachée ou enregistre la valeur du fetch et la retourne
+    return cached ??= await fetch('infos.json')     // ca retourne une réponse
+        .then(resp => resp.json());                 // ca retourne le json parsé en object
+}
+
+getData().then(data => {
+
+    //console.log(data);
+    //console.log(data.movies.movie[1]);
+
+    // let tabFilmCherche = data.movies.movie;
+    // let tabSerieCherche = data.series.serie;
+    tabFilmCherche = data.movies.movie;
+    tabSerieCherche = data.series.serie;
+
+    //console.log('tabfilmcherche')
+    //console.log(tabFilmCherche);
+    //console.log(tabSerieCherche);
 
 
-    for (i = 0; i < tableauRoot.length; i++) {
-        // let wrapFilm = document.getElementById("wrapperfilm");
+    let mapFilm = new Map();
 
-        if (!objDejaTrouves.includes(tableauRoot[i].idFilm)) {
+    tabFilmCherche.forEach(item => {
+        mapFilm.set(item.idFilm, item);
+    });
+    //console.log(mapFilm);
 
-            let divFilm = document.createElement("div");
-            let imgFilm = document.createElement("img");
-            let idFilm = document.createElement("h3");
+    let mapSerie = new Map();
+    tabSerieCherche.forEach(item => {
+        mapSerie.set(item.idSerie, item);
+    });
+    //console.log(mapSerie);
 
-            divFilm.className = "swiper-slide";
-            divFilm.dataset.id = tableauRoot[i].idFilm;
+    //console.log(objDejaTrouves);
 
-            // imgFilm.src = "/images/" + tableauRoot[i] + ".jpg";
-            // imgFilm.src = tabFilmCherche.movies.movie[i].picture;
-            imgFilm.src = tableauRoot[i].picture;
+    function genereImages(root, tableauRoot) {
 
-            idFilm.innerText = tableauRoot[i].idFilm;
+        // console.log(root.id);
+        if (root.id == "filmcherche") {
+            for (i = 0; i < tableauRoot.length; i++) {
+                if (!filmDejaTrouves.includes(tableauRoot[i].idFilm)) {
 
-            //console.log(idFilm);
+                    let divFilm = document.createElement("div");
+                    let imgFilm = document.createElement("img");
+                    //let titreFilm = document.createElement("h3");
 
-            divFilm.appendChild(imgFilm);
-            divFilm.appendChild(idFilm);
+                    divFilm.className = "swiper-slide";
+                    divFilm.dataset.id = tableauRoot[i].idFilm;
 
-            divFilm.addEventListener('click', e => afficheModale(divFilm));
-            root.appendChild(divFilm);
-        }
+                    imgFilm.src = tableauRoot[i].picture;
+
+                    let titreFilm = tableauRoot[i].title;
+
+                    //console.log(idFilm);
+
+                    divFilm.appendChild(imgFilm);
+                    //divFilm.appendChild(titreFilm);
+
+                    // divFilm.addEventListener('click', e => afficheModale(divFilm));
+                    divFilm.addEventListener('click', e => afficheModale(divFilm.dataset.id, imgFilm.src, titreFilm));
+                    root.appendChild(divFilm);
+                }
+            };
+
+        } else if (root.id == "seriecherche") {
+
+            for (i = 0; i < tableauRoot.length; i++) {
+                if (!serieDejaTrouves.includes(tableauRoot[i].idSerie)) {
+
+                    let divSerie = document.createElement("div");
+                    let imgSerie = document.createElement("img");
+                    //let idSerie = document.createElement("h3");
+
+                    divSerie.className = "swiper-slide";
+                    divSerie.dataset.id = tableauRoot[i].idSerie;
+
+                    imgSerie.src = tableauRoot[i].picture;
+
+                    let titreSerie = tableauRoot[i].title;
+
+                    //console.log(idFilm);
+
+                    divSerie.appendChild(imgSerie);
+                    //divSerie.appendChild(idSerie);
+
+                    divSerie.addEventListener('click', e => afficheModale(divSerie.dataset.id, imgSerie.src, titreSerie));
+                    root.appendChild(divSerie);
+                }
+            };
+
+        };
     };
 
-    // divFilmCherche.classList.add('cherche');
+
+
+    genereImages(divFilmCherche, tabFilmCherche);
+    genereImages(divSerieCherche, tabSerieCherche);
+
+});
 
 
 
-    return new Swiper(root.parentElement, {
-
-        direction: "horizontal",
-        loop: true,
-        grabCursor: true,
-        centeredSlides: true,
-        // autoplay: {
-        //     delay: 2000,
-        //     // stoppe le swipe auto si action manuelle
-        //     disableOnInteraction: true
-        // },
-        slidesPerView: 3,
-        spaceBetween: 3,
-        breakpoints: {
-            // 640: {
-            //     slidesPerView: 3,
-
-            // },
-            768: {
-                slidesPerView: 4,
-
-            },
-            992: {
-                slidesPerView: 6,
-
-            },
-            1200: {
-                slidesPerView: 8,
-
-            },
-
-        },
 
 
-    });
-
-};
 
 
 let reponseSaisie = document.getElementById("reponse");
 let reponseATrouver = "";
 
-function afficheModale(elem) {
+function afficheModale(ident, Image, Titre) {
 
     document.getElementById("reponse").value = "";
-    let ident = elem.dataset.id;
 
-    let item = map.get(ident);
+    console.log("ds la modale");
+    console.log(ident + ' ' + Image + ' ' + Titre);
+
+    let id = ident;
+    let imgSrc = Image;
+    let reponseATrouver = Titre;
+    //console.log(id + ' ' + imgSrc + ' ' + reponseATrouver);
+
+    //let item = map.get(ident);
+
+
 
     let modale = document.getElementById("modale");
     let imgModal = document.getElementById("image");
-    reponseATrouver = item.title;
+    // reponseATrouver = id; // item.title;
 
     // let reponse = document.getElementById("reponse").value;
     // reponse = '';
     modale.style.visibility = "visible";
 
-
-    let imgSrc = item.picture;
-
     imgModal.style.backgroundImage = `url(${imgSrc})`;
 
 
     // Masquer la div si clique en dehors ?
-    // modale.addEventListener("click", function () {
-    //     modale.style.visibility = "hidden";
-    // });
+    imgModal.addEventListener("click", function () {
+        modale.style.visibility = "hidden";
+    });
 
 
 
@@ -222,9 +215,62 @@ function afficheModale(elem) {
 
 
 function verifReponse() {
+
     let reponse = document.getElementById("reponse").value;
 
     alert('=>' + reponse + ' pour ' + reponseATrouver);
 
     // if (reponse === )
 }
+
+
+const swiper1 = new Swiper(divFilmCherche.parentElement,
+    {
+        direction: "horizontal",
+        loop: true,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 3,
+        spaceBetween: 3,
+        breakpoints: {
+            // 640: {
+            //     slidesPerView: 3
+            // },
+            768: {
+                slidesPerView: 4,
+            },
+            992: {
+                slidesPerView: 6,
+            },
+            1200: {
+                slidesPerView: 8,
+            },
+        },
+    }
+);
+
+const swiper2 = new Swiper(divSerieCherche.parentElement,
+
+    {
+        direction: "horizontal",
+        loop: true,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: 3,
+        spaceBetween: 3,
+        breakpoints: {
+            // 640: {
+            //     slidesPerView: 3
+            // },
+            768: {
+                slidesPerView: 4,
+            },
+            992: {
+                slidesPerView: 6,
+            },
+            1200: {
+                slidesPerView: 8,
+            },
+        },
+    }
+);

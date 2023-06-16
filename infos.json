@@ -1,108 +1,109 @@
 {
     "movies": {
         "movie": [
-			{
-				"idFilm"	: "F1",	
-                "title"		: "Interstellar",
-                "picture"	: "./images/movies/interstellar.jpg"
+            {
+                "idFilm": "F1",
+                "title": "Interstellar",
+                "picture": "./images/movies/interstellar.jpg"
             },
             {
-				"idFilm"	: "F2",	
-                "title"		: "Iron Man",
-                "picture"	: "./images/movies/ironman.jpg"
+                "idFilm": "F2",
+                "title": "Iron Man",
+                "picture": "./images/movies/ironman.jpg"
             },
             {
-				"idFilm"	: "F3",	
-                "title"		: "Matrix",
-                "picture"	: "./images/movies/matrix.jpg"
+                "idFilm": "F3",
+                "title": "Matrix",
+                "picture": "./images/movies/matrix.jpg"
             },
             {
-				"idFilm"	: "F4",	
-                "title"		: "Le Pacte des Loups",
-                "picture"	: "./images/movies/lepactedesloups.jpg"
-            },
-			{
-				"idFilm"	: "F5",	
-                "title"		: "Pulp Fiction",
-                "picture"	: "./images/movies/pulpfiction.jpg"
-            },
-			{
-				"idFilm"	: "F6",	
-                "title"		: "Rambo",
-                "picture"	: "./images/movies/rambo.jpg"
-            },
-			{
-				"idFilm"	: "F7",	
-                "title"		: "Shining",
-                "picture"	: "./images/movies/shining.jpg"
+                "idFilm": "F4",
+                "title": "Le Pacte des Loups",
+                "picture": "./images/movies/pactedesloups.jpg"
             },
             {
-				"idFilm"	: "F8",	
-                "title"		: "Spiderman",
-                "picture"	: "./images/movies/spiderman.jpg"
+                "idFilm": "F5",
+                "title": "Pulp Fiction",
+                "picture": "./images/movies/pulpfiction.jpg"
             },
             {
-				"idFilm"	: "F9",	
-                "title"		: "Total Recall",
-                "picture"	: "./images/movies/totalrecall.jpg"
+                "idFilm": "F6",
+                "title": "Rambo",
+                "picture": "./images/movies/rambo.jpg"
             },
             {
-				"idFilm"	: "F10",	
-                "title"		: "Star Wars",
-                "picture"	: "./images/movies/starwars.jpg"
+                "idFilm": "F7",
+                "title": "Shining",
+                "picture": "./images/movies/shining.jpg"
+            },
+            {
+                "idFilm": "F8",
+                "title": "Spiderman",
+                "picture": "./images/movies/spiderman.jpg"
+            },
+            {
+                "idFilm": "F9",
+                "title": "Total Recall",
+                "picture": "./images/movies/totalrecall.jpg"
+            },
+            {
+                "idFilm": "F10",
+                "title": "Star Wars",
+                "picture": "./images/movies/starwars.jpg"
             }
-        ]},
-		"series": {
+        ]
+    },
+    "series": {
         "serie": [
             {
-                "idSerie" 	: "S1",
-				"title"		: "V",
-                "picture"	: "./images/series/v.jpg"
-            },
-			{
-                "idSerie" 	: "S2",
-				"title"		: "Chateauvallon",
-                "picture"	: "./images/series/chateauvallon.jpg"
+                "idSerie": "S1",
+                "title": "V",
+                "picture": "./images/series/v.jpg"
             },
             {
-                "idSerie" 	: "S3",
-				"title"		: "Dallas",
-                "picture"	: "./images/series/dallas.jpg"
+                "idSerie": "S2",
+                "title": "Chateauvallon",
+                "picture": "./images/series/chateauvallon.jpg"
             },
             {
-                "idSerie" 	: "S4",
-				"title"		: "Heroes",
-                "picture"	: "./images/series/heroes.jpg"
+                "idSerie": "S3",
+                "title": "Dallas",
+                "picture": "./images/series/dallas.jpg"
             },
             {
-                "idSerie" 	: "S5",
-				"title"		: "Magnum",
-                "picture"	: "./images/series/magnum.jpg"
+                "idSerie": "S4",
+                "title": "Heroes",
+                "picture": "./images/series/heroes.jpg"
             },
             {
-                "idSerie" 	: "S6",
-				"title"		: "Prison Break",
-                "picture"	: "./images/series/prisonbreak.jpg"
+                "idSerie": "S5",
+                "title": "Magnum",
+                "picture": "./images/series/magnum.jpg"
             },
             {
-                "idSerie" 	: "S7",
-				"title"		: "Amicalement Votre",
-                "picture"	: "./images/series/votre.jpg"
+                "idSerie": "S6",
+                "title": "Prison Break",
+                "picture": "./images/series/prisonbreak.jpg"
             },
             {
-                "idSerie" 	: "S8",
-				"title"		: "Chapeau Melon et Bottes de cuir",
-                "picture"	: "./images/series/chapeau.jpg"
+                "idSerie": "S7",
+                "title": "Amicalement Votre",
+                "picture": "./images/series/votre.jpg"
             },
             {
-                "idSerie" 	: "S9",
-				"title"		: "Le Prisonnier",
-                "picture"	: "./images/series/leprisonnier.jpg"
+                "idSerie": "S8",
+                "title": "Chapeau Melon et Bottes de cuir",
+                "picture": "./images/series/chapeau.jpg"
             },
             {
-                "idSerie" 	: "S10",
-				"title"		: "X-Files",
-                "picture"	: "./images/series/xfiles.jpg"
+                "idSerie": "S9",
+                "title": "Le Prisonnier",
+                "picture": "./images/series/leprisonnier.jpg"
+            },
+            {
+                "idSerie": "S10",
+                "title": "X-Files",
+                "picture": "./images/series/xfiles.jpg"
             }
         ]
     }
