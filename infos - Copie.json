@@ -2,52 +2,52 @@
     "movies": {
         "movie": [
             {
-                "identifiant": "F1",
+                "idFilm": "F1",
                 "title": "Interstellar",
                 "picture": "./images/movies/interstellar.jpg"
             },
             {
-                "identifiant": "F2",
+                "idFilm": "F2",
                 "title": "Iron Man",
                 "picture": "./images/movies/ironman.jpg"
             },
             {
-                "identifiant": "F3",
+                "idFilm": "F3",
                 "title": "Matrix",
                 "picture": "./images/movies/matrix.jpg"
             },
             {
-                "identifiant": "F4",
+                "idFilm": "F4",
                 "title": "Le Pacte des Loups",
                 "picture": "./images/movies/pactedesloups.jpg"
             },
             {
-                "identifiant": "F5",
+                "idFilm": "F5",
                 "title": "Pulp Fiction",
                 "picture": "./images/movies/pulpfiction.jpg"
             },
             {
-                "identifiant": "F6",
+                "idFilm": "F6",
                 "title": "Rambo",
                 "picture": "./images/movies/rambo.jpg"
             },
             {
-                "identifiant": "F7",
+                "idFilm": "F7",
                 "title": "Shining",
                 "picture": "./images/movies/shining.jpg"
             },
             {
-                "identifiant": "F8",
+                "idFilm": "F8",
                 "title": "Spiderman",
                 "picture": "./images/movies/spiderman.jpg"
             },
             {
-                "identifiant": "F9",
+                "idFilm": "F9",
                 "title": "Total Recall",
                 "picture": "./images/movies/totalrecall.jpg"
             },
             {
-                "identifiant": "F10",
+                "idFilm": "F10",
                 "title": "Star Wars",
                 "picture": "./images/movies/starwars.jpg"
             }
@@ -56,52 +56,52 @@
     "series": {
         "serie": [
             {
-                "identifiant": "S1",
+                "idSerie": "S1",
                 "title": "V",
                 "picture": "./images/series/v.jpg"
             },
             {
-                "identifiant": "S2",
+                "idSerie": "S2",
                 "title": "Chateauvallon",
                 "picture": "./images/series/chateauvallon.jpg"
             },
             {
-                "identifiant": "S3",
+                "idSerie": "S3",
                 "title": "Dallas",
                 "picture": "./images/series/dallas.jpg"
             },
             {
-                "identifiant": "S4",
+                "idSerie": "S4",
                 "title": "Heroes",
                 "picture": "./images/series/heroes.jpg"
             },
             {
-                "identifiant": "S5",
+                "idSerie": "S5",
                 "title": "Magnum",
                 "picture": "./images/series/magnum.jpg"
             },
             {
-                "identifiant": "S6",
+                "idSerie": "S6",
                 "title": "Prison Break",
                 "picture": "./images/series/prisonbreak.jpg"
             },
             {
-                "identifiant": "S7",
+                "idSerie": "S7",
                 "title": "Amicalement Votre",
                 "picture": "./images/series/votre.jpg"
             },
             {
-                "identifiant": "S8",
+                "idSerie": "S8",
                 "title": "Chapeau Melon et Bottes de cuir",
                 "picture": "./images/series/chapeau.jpg"
             },
             {
-                "identifiant": "S9",
+                "idSerie": "S9",
                 "title": "Le Prisonnier",
                 "picture": "./images/series/leprisonnier.jpg"
             },
             {
-                "identifiant": "S10",
+                "idSerie": "S10",
                 "title": "X-Files",
                 "picture": "./images/series/xfiles.jpg"
             }

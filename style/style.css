@@ -182,6 +182,7 @@ header {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .div-interne {
@@ -216,15 +217,19 @@ header {
   height: 40vh;
   z-index: 5;
 }
-
 #modale .image {
   width: 100%;
   height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
 }
+#modale h3 {
+  visibility: hidden;
+  margin-top: 20px;
+  text-align: center;
+}
 
-.reponse {
+.div-reponse {
   border: solid 1px yellow;
   display: flex;
 }
