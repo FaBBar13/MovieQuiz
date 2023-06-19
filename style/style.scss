@@ -23,36 +23,62 @@ body {
 @import "_loader.scss";
 
 header {
-    color: white;
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
-    max-height: 70px;
-}
-
-.logo {
-    height: 31px;
-    width: 23px;
 
 }
 
-.logo img {
-    height: 100%;
-    width: 100%;
-    background-color: transparent;
+nav {
+    height: 100px;
+    background: transparent;
+    border: solid 1px red;
+
+
+    .menu {
+        justify-content: space-between;
+    }
+
+    // img {
+    //     height: 50px;
+    //     width: 50px;
+    //     object-fit: fill;
+    // }
 }
 
-.nav-mobile {
-    //border: solid 1px red;
-    display: flex;
-    justify-content: space-between;
-    max-height: 80px;
-}
+
+// header {
+//     color: white;
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     max-height: 70px;
+// }
+
+// .logo {
+//     height: 31px;
+//     width: 23px;
+
+// }
+
+// .logo img {
+//     height: 100%;
+//     width: 100%;
+//     background-color: transparent;
+// }
+
+// .nav-mobile {
+//     //border: solid 1px red;
+//     display: flex;
+//     justify-content: space-between;
+//     max-height: 80px;
+// }
 
 // h2 {
 //     border: solid 1px red;
 // }
+
+
+
 
 .zonejeu {
 
@@ -67,16 +93,23 @@ header {
 }
 
 .infos {
-    // border: solid 1px yellow;
+    border: solid 1px yellow;
     height: 40vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
     background-color: #141414;
-    //background-image: url('/images/ocean.jpg');
-    //background-position: center center;
+    background-image: url('/images/movies/soupe.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    //background-position: contain;
+
+    // object-fit: fill;
+    // object-position: center;
     padding-left: 18px;
+    color: white;
 
 }
 
@@ -85,7 +118,7 @@ header {
 // }
 
 .contenu {
-    border: solid 1px red;
+    //border: solid 1px red;
     margin-bottom: 10px;
 
     img {
@@ -156,7 +189,7 @@ header {
     .image {
         // width: 200px;
         // height: 300px;
-    
+
         width: 100%;
         height: 100%;
         // background-image: url("/images/ocean.jpg");
@@ -207,11 +240,10 @@ footer {
             height: 240px;
         }
 
-        // max-width: 210px;
     }
 
     .infos {
-        height: 60vh;
+        height: 70vh;
     }
 
     .reponse {

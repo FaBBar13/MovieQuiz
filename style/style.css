@@ -116,29 +116,16 @@ body {
   }
 }
 header {
-  color: white;
-  position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
-  max-height: 70px;
 }
 
-.logo {
-  height: 31px;
-  width: 23px;
+nav {
+  height: 100px;
+  background: transparent;
+  border: solid 1px red;
 }
-
-.logo img {
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-}
-
-.nav-mobile {
-  display: flex;
+nav .menu {
   justify-content: space-between;
-  max-height: 80px;
 }
 
 .zonejeu {
@@ -152,17 +139,22 @@ header {
 }
 
 .infos {
+  border: solid 1px yellow;
   height: 40vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
   background-color: #141414;
+  background-image: url("/images/movies/soupe.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
   padding-left: 18px;
+  color: white;
 }
 
 .contenu {
-  border: solid 1px red;
   margin-bottom: 10px;
 }
 .contenu img {
@@ -253,7 +245,7 @@ footer {
     height: 240px;
   }
   .infos {
-    height: 60vh;
+    height: 70vh;
   }
   .reponse {
     flex-direction: row;
