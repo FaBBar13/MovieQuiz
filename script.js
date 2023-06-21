@@ -31,6 +31,39 @@ console.log(identDejaTrouves);
 
 
 
+function afficheJeu(type) {
+
+    let lesFilms = document.querySelectorAll('.films');;
+    let lesSeries = document.querySelectorAll('.series');
+    if (type == 'S') {
+        // console.log('Series');
+
+        for (i = 0; i < lesFilms.length; i++) {
+            lesFilms[i].style = "display : none;";
+        };
+        for (i = 0; i < lesSeries.length; i++) {
+            lesSeries[i].style = "display : block;";
+        };
+
+    } else if (type == 'F') {
+
+        for (i = 0; i < lesFilms.length; i++) {
+            lesFilms[i].style = "display : block;";
+        };
+        for (i = 0; i < lesSeries.length; i++) {
+            lesSeries[i].style = "display : none;";
+        };
+
+    } else if (type == 'T') {
+
+        for (i = 0; i < lesFilms.length; i++) {
+            lesFilms[i].style = "display : block;";
+        };
+        for (i = 0; i < lesSeries.length; i++) {
+            lesSeries[i].style = "display : block;";
+        };
+    };
+}
 
 /* */
 let divFilmCherche = document.getElementById('filmcherche');
@@ -215,14 +248,22 @@ getData().then(data => {
 
 let reponseATrouver = "";
 let identATrouver = "";
-
+let modale = document.getElementById("modale");
 // function placeFocus() {
 //     document.getElementById("reponse").focus();
 // };
 
+function masqueModale() {
+    setTimeout(() => {
+
+        modale.style.visibility = " hidden;";
+    }, 3000)
+};
+
+
 function afficheModale(ident, Image, Titre) {
 
-    document.getElementById("reponse").value = "";
+
 
     //placeFocus() : ? why
 
@@ -230,13 +271,14 @@ function afficheModale(ident, Image, Titre) {
     identATrouver = ident;
     reponseATrouver = Titre;
 
-    let modale = document.getElementById("modale");
+    //let modale = document.getElementById("modale");
     let imgModal = document.getElementById("image");
 
     modale.addEventListener("submit", verifReponse);
 
 
     modale.style.visibility = "visible";
+    //modale.style.backgroundImage = `url(${imgSrc})`;
     imgModal.style.backgroundImage = `url(${imgSrc})`;
     window.scroll({
         top: 0
@@ -247,7 +289,8 @@ function afficheModale(ident, Image, Titre) {
         modale.style.visibility = "hidden";
     });
 
-
+    document.getElementById("reponse").value = "";
+    document.getElementById("reponse").focus();
 }
 
 let libResultat = document.getElementById("resultat");
@@ -264,16 +307,20 @@ function verifReponse() {
     tmpSai = reponseSaisie.toLowerCase();
     tmpSai = ((tmpSai.replaceAll('é', 'e')).replaceAll('è', 'e')).replaceAll(' ', '');
     tmpSai = tmpSai.replaceAll('à', 'a');
+    tmpSai = tmpSai.replaceAll('-', '');
+
     tmpTit = reponseATrouver.toLowerCase();
     tmpTit = ((tmpTit.replaceAll('é', 'e')).replaceAll('è', 'e')).replaceAll(' ', '');
     tmpTit = tmpTit.replaceAll('à', 'a');
+    tmpTit = tmpTit.replaceAll('-', '');
     //alert('=>' + reponseSaisie +" = " + tmpSai + ' <=> ' + tmpTit + '  ' + reponseATrouver + " id = " + identATrouver);
 
     // libResultat.style = 'visibility : visible;'
 
 
     if (tmpSai == tmpTit) {
-        console.log('Bonne Réponse');
+        //console.log('Bonne Réponse');
+
         libResultat.style = 'color:green;'
         libResultat.innerHTML = "BONNE REPONSE";
         let locStorage = JSON.parse(localStorage.getItem("identTrouve"));
@@ -282,13 +329,16 @@ function verifReponse() {
 
     }
     else {
-        console.log('Mauvaise Réponse');
+        //console.log('Mauvaise Réponse');
+
         libResultat.style = 'color:red;'
         libResultat.innerHTML = "MAUVAISE REPONSE";
 
     };
 
+
     //alert('visible');
+
 
 };
 
@@ -299,10 +349,11 @@ let titInfos = document.querySelector('.infos h2');
 
 let btnBA = document.getElementById('btn-ba');
 let btnInfo = document.getElementById('btn-info');
-let idTMDB = document.getElementById('id-tmdb');
+// let idTMDB = document.getElementById('id-tmdb');
+// idTMDB.textContent = "9317";
 
 titInfos.textContent = "La Soupe aux Choux";
-idTMDB.textContent = "9317";
+
 //btnInfo.addEventListener("click", afficheInfos);
 
 
@@ -328,8 +379,8 @@ async function afficheInfos(id, titre, idtmdb) {
     const result = await fetch(url, api_options).then(resp => resp.json());
 
     console.log(result);
-    // valeur de largeur w342 , w500, w780 ,
-    const bigImage = API_IMAGE_ROOT + 'w780' + result.backdrop_path;
+    // valeur de largeur w342 , w500, w780 , 
+    const bigImage = API_IMAGE_ROOT + 'w780' + result.poster_path;
 
     divInfos.style.backgroundImage = 'url(' + bigImage + ')';
     titInfos.innerHTML = titre;

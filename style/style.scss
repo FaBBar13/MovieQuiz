@@ -18,8 +18,8 @@ body {
 header {
     width: 100%;
     //position :absolute;
-    position :fixed;
-    top : 0;
+    position: fixed;
+    top: 0;
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
 
 }
@@ -35,51 +35,31 @@ nav {
     //     justify-content: space-between;
     // }
 
-    // img {
-    //     height: 50px;
-    //     width: 50px;
-    //     object-fit: fill;
-    // }
+    .logo {
+
+        border: solid 1px red;
+        height: 30px;
+        width: 100px;
+        display: flex;
+        align-items: center;
+
+    }
+
+    img {
+
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+
+
+    }
 }
-
-
-// header {
-//     color: white;
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     max-height: 70px;
-// }
-
-// .logo {
-//     height: 31px;
-//     width: 23px;
-
-// }
-
-// .logo img {
-//     height: 100%;
-//     width: 100%;
-//     background-color: transparent;
-// }
-
-// .nav-mobile {
-//     //border: solid 1px red;
-//     display: flex;
-//     justify-content: space-between;
-//     max-height: 80px;
-// }
-
-// h2 {
-//     border: solid 1px red;
-// }
 
 
 
 
 .zonejeu {
-    
+
     // display: none; => pour eviter le loader!
     flex-direction: column;
     justify-content: space-between;
@@ -88,32 +68,69 @@ nav {
     color: white;
     background-color: transparent;
 
-    //background-image: url('/images/movies/soupe.jpg');
-    // background-position: center;
-    // background-repeat: no-repeat;
-    // background-size: contain;
-    //background-position: contain;
 }
 
 .infos {
     border: solid 1px yellow;
-    height: 40vh;
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
     background-color: #141414;
-    background-image: url('/images/movies/soupe.jpg');
+    background-image: url('/images/movies/soupe_affiche.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    
 
-    // object-fit: fill;
-    // object-position: center;
     padding-left: 18px;
+
     color: white;
 
+    h2 {
+        font-family: 'Poppins';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 45px;
+        line-height: 48px;
+
+        /* or 107% */
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        margin-bottom: 35px;
+
+    }
+
+    #btn-ba {
+        margin-bottom: 23px;
+        padding: 0 10px;
+        background: #FFFFFF;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+
+        img {
+            width: 28px;
+            height: 30px;
+        }
+    }
+
+    #btn-info {
+        padding: 0 15px;
+        margin-bottom: 15px;
+        background: rgba(109, 109, 110, 0.7);
+        border-radius: 4px;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        img {
+            width: 28px;
+            height: 30px;
+        }
+    }
 }
 
 // .zonejeu div {
@@ -123,15 +140,15 @@ nav {
 .contenu {
     //border: solid 1px red;
     margin-bottom: 10px;
-    
-   
+
+
     img {
         height: 180px;
         aspect-ratio: 2/3;
         object-fit: cover;
         object-position: center center;
         // max-width: 100%;
-        
+
     }
 
 }
@@ -150,7 +167,7 @@ nav {
         justify-content: center;
         text-align: center;
         // border: solid 1px white;
-        
+
     }
 }
 
@@ -169,26 +186,31 @@ nav {
 
 .swiper-slide:hover {
     scale: 1.2;
-    
+
     //border: solid 1px white;
 }
 
 .cherche {
     // ajouter blur(2px) apres grey
-    filter: grayscale(1) ;
-    
-    .swiper-slide{
-        filter : blur(2px);
+    filter: grayscale(1);
+
+    .swiper-slide {
+        filter: blur(2px);
     }
+
     .swiper-slide:hover {
         scale: 1.2;
-        filter : blur(0);
+        filter: blur(0);
     }
-};
+}
+
+;
 
 #modale {
     visibility: hidden;
-    background-color: white; //transparent;
+    //background-color: white; 
+    background: rgb(0, 0, 0);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 1) 0%, rgba(112, 112, 101, 1) 100%);
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -197,12 +219,10 @@ nav {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 40vh;
+    height: 80vh;
     z-index: 5;
 
     .image {
-        // width: 200px;
-        // height: 300px;
 
         width: 100%;
         height: 100%;
@@ -212,7 +232,7 @@ nav {
     }
 
     h3 {
-        visibility: hidden;
+        //visibility: hidden;
         margin-top: 20px;
         text-align: center;
     }
@@ -229,8 +249,9 @@ nav {
 
 
 footer {
+    margin-top: 20px;
+    text-align: center;
     color: white;
-    display: none;
 }
 
 @media screen and (min-width : 640px) {
@@ -249,6 +270,7 @@ footer {
 
     .infos {
         height: 80vh;
+        //flex-direction: row;
     }
 
     .reponse {

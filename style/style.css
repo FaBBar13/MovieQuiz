@@ -125,6 +125,19 @@ header {
 nav {
   background: transparent;
 }
+nav .logo {
+  border: solid 1px red;
+  height: 30px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+}
+nav img {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
 
 .zonejeu {
   flex-direction: column;
@@ -137,18 +150,56 @@ nav {
 
 .infos {
   border: solid 1px yellow;
-  height: 40vh;
+  height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-end;
   background-color: #141414;
-  background-image: url("/images/movies/soupe.jpg");
+  background-image: url("/images/movies/soupe_affiche.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   padding-left: 18px;
   color: white;
+}
+.infos h2 {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 45px;
+  line-height: 48px;
+  /* or 107% */
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+.infos #btn-ba {
+  margin-bottom: 23px;
+  padding: 0 10px;
+  background: #FFFFFF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.infos #btn-ba img {
+  width: 28px;
+  height: 30px;
+}
+.infos #btn-info {
+  padding: 0 15px;
+  margin-bottom: 15px;
+  background: rgba(109, 109, 110, 0.7);
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.infos #btn-info img {
+  width: 28px;
+  height: 30px;
 }
 
 .contenu {
@@ -204,7 +255,8 @@ nav {
 
 #modale {
   visibility: hidden;
-  background-color: white;
+  background: rgb(0, 0, 0);
+  background: linear-gradient(180deg, rgb(0, 0, 0) 0%, rgb(112, 112, 101) 100%);
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -212,7 +264,7 @@ nav {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 40vh;
+  height: 80vh;
   z-index: 5;
 }
 #modale .image {
@@ -222,7 +274,6 @@ nav {
   background-position: center center;
 }
 #modale h3 {
-  visibility: hidden;
   margin-top: 20px;
   text-align: center;
 }
@@ -233,8 +284,9 @@ nav {
 }
 
 footer {
+  margin-top: 20px;
+  text-align: center;
   color: white;
-  display: none;
 }
 
 @media screen and (min-width: 640px) {
