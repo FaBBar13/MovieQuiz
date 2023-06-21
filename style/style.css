@@ -117,15 +117,13 @@ body {
 }
 header {
   width: 100%;
+  position: fixed;
+  top: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
 }
 
 nav {
-  height: 100px;
   background: transparent;
-  border: solid 1px red;
-}
-nav .menu {
-  justify-content: space-between;
 }
 
 .zonejeu {
@@ -133,7 +131,6 @@ nav .menu {
   justify-content: space-between;
   min-height: 100vh;
   width: 100vw;
-  margin-top: 80px;
   color: white;
   background-color: transparent;
 }
@@ -162,6 +159,8 @@ nav .menu {
   aspect-ratio: 2/3;
   -o-object-fit: cover;
      object-fit: cover;
+  -o-object-position: center center;
+     object-position: center center;
 }
 
 .swiper-wrapper {
@@ -189,11 +188,18 @@ nav .menu {
 }
 
 .swiper-slide:hover {
-  scale: 1.1;
+  scale: 1.2;
 }
 
 .cherche {
   filter: grayscale(1);
+}
+.cherche .swiper-slide {
+  filter: blur(2px);
+}
+.cherche .swiper-slide:hover {
+  scale: 1.2;
+  filter: blur(0);
 }
 
 #modale {
@@ -235,17 +241,11 @@ footer {
   .zonejeu {
     color: black;
   }
-  .nav-mobile {
-    display: none;
-  }
-  .nav-desktop {
-    display: flex;
-  }
   .contenu img {
     height: 240px;
   }
   .infos {
-    height: 70vh;
+    height: 80vh;
   }
   .reponse {
     flex-direction: row;

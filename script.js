@@ -242,7 +242,7 @@ function afficheModale(ident, Image, Titre) {
         top: 0
     });
 
-    // retour : Masquer la div si clique en dehors ?
+    // retour : Masquer la div si clique sur image  ?
     imgModal.addEventListener("click", function () {
         modale.style.visibility = "hidden";
     });
@@ -329,7 +329,7 @@ async function afficheInfos(id, titre, idtmdb) {
 
     console.log(result);
     // valeur de largeur w342 , w500, w780 ,
-    const bigImage = API_IMAGE_ROOT + 'w342' + result.poster_path;
+    const bigImage = API_IMAGE_ROOT + 'w780' + result.backdrop_path;
 
     divInfos.style.backgroundImage = 'url(' + bigImage + ')';
     titInfos.innerHTML = titre;

@@ -11,31 +11,29 @@ body {
     background-color: #141414;
     font-family: 'Poppins';
 
-    // background-image: url("/images/ocean.jpg");
-    // background-color: #111111;
-    // background-repeat: no-repeat;
-    // background-position: left center;
-    // background-size: cover;
-    // background-size: 60vh;
-
 }
 
 @import "_loader.scss";
 
 header {
     width: 100%;
+    //position :absolute;
+    position :fixed;
+    top : 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
 
 }
 
 nav {
-    height: 100px;
+    //height: 100px;
     background: transparent;
-    border: solid 1px red;
+    //border: solid 1px red;
+    //justify-content: space-between;
 
 
-    .menu {
-        justify-content: space-between;
-    }
+    // .menu {
+    //     justify-content: space-between;
+    // }
 
     // img {
     //     height: 50px;
@@ -81,15 +79,20 @@ nav {
 
 
 .zonejeu {
-
+    
     // display: none; => pour eviter le loader!
     flex-direction: column;
     justify-content: space-between;
     min-height: 100vh;
     width: 100vw;
-    margin-top: 80px;
     color: white;
     background-color: transparent;
+
+    //background-image: url('/images/movies/soupe.jpg');
+    // background-position: center;
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    //background-position: contain;
 }
 
 .infos {
@@ -104,7 +107,7 @@ nav {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    //background-position: contain;
+    
 
     // object-fit: fill;
     // object-position: center;
@@ -120,13 +123,15 @@ nav {
 .contenu {
     //border: solid 1px red;
     margin-bottom: 10px;
-
+    
+   
     img {
         height: 180px;
         aspect-ratio: 2/3;
-        // max-width: 100%;
-        //object-position: center center;
         object-fit: cover;
+        object-position: center center;
+        // max-width: 100%;
+        
     }
 
 }
@@ -145,7 +150,7 @@ nav {
         justify-content: center;
         text-align: center;
         // border: solid 1px white;
-
+        
     }
 }
 
@@ -163,14 +168,23 @@ nav {
 }
 
 .swiper-slide:hover {
-    scale: 1.1;
+    scale: 1.2;
+    
     //border: solid 1px white;
 }
 
 .cherche {
-    // ajouter blur(3px) apres grey
-    filter: grayscale(1);
-}
+    // ajouter blur(2px) apres grey
+    filter: grayscale(1) ;
+    
+    .swiper-slide{
+        filter : blur(2px);
+    }
+    .swiper-slide:hover {
+        scale: 1.2;
+        filter : blur(0);
+    }
+};
 
 #modale {
     visibility: hidden;
@@ -192,7 +206,6 @@ nav {
 
         width: 100%;
         height: 100%;
-        // background-image: url("/images/ocean.jpg");
         background-repeat: no-repeat;
         background-position: center center;
         //background-size: contain;
@@ -226,14 +239,6 @@ footer {
         color: black;
     }
 
-    .nav-mobile {
-        display: none;
-    }
-
-    .nav-desktop {
-        display: flex;
-    }
-
     .contenu {
 
         img {
@@ -243,7 +248,7 @@ footer {
     }
 
     .infos {
-        height: 70vh;
+        height: 80vh;
     }
 
     .reponse {
