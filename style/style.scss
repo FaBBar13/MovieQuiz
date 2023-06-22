@@ -20,20 +20,13 @@ header {
     //position :absolute;
     position: fixed;
     top: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
+    
 
 }
 
 nav {
-    //height: 100px;
-    background: transparent;
-    //border: solid 1px red;
-    //justify-content: space-between;
-
-
-    // .menu {
-    //     justify-content: space-between;
-    // }
+    height: 100px;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
 
     .logo {
 
@@ -51,7 +44,9 @@ nav {
         width: 100%;
         object-fit: cover;
 
-
+    }
+    .menu-min {
+        text-align : center;
     }
 }
 
@@ -266,6 +261,22 @@ footer {
 }
 
 @media screen and (min-width : 640px) {
+
+    nav {
+
+        img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .logo {
+            img {
+                width: 100px;
+                height: 20px;
+            }
+    
+        }
+    }
     .zonejeu {
         // background-color: lightgrey;
         color: black;

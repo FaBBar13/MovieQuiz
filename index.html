@@ -38,7 +38,7 @@
     </div> -->
 
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark ">
+        <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
             <div class="container-fluid">
                 <div class="logo">
                     <a class="navbar-brand" href="#"><img src="/images/logo_moviequiz.png" alt=""></a>
@@ -49,14 +49,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Accueil</a>
+                    <div class="navbar-nav menu-min">
+                        <a class="nav-link" onclick="afficheJeu('A')" aria-current="page" href="#">Accueil</a>
                         <a class="nav-link" onclick="afficheJeu('S')" href="#">Séries</a>
                         <a class="nav-link" onclick="afficheJeu('F')" href="#">Films</a>
                         <a class="nav-link" onclick="afficheJeu('T')" href="#">Tous les Films et Séries</a>
                         <div class="d-md-flex d-none d-lg-block ">
-                            <a class="nav-link" href="#">?</a>
-                            <a class="nav-link" href="#">Comment jouer</a>
+                            <!-- <a class="nav-link" href="#">?</a> -->
+                            <a class="nav-link" href="#"><img src="/images/interrogation.png">Comment jouer</a>
                         </div>
                     </div>
                 </div>

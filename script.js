@@ -30,40 +30,58 @@ if (identDejaTrouves === null) {
 console.log(identDejaTrouves);
 
 
+//const menuMin = new bootstrap.Modal(document.getElementById('navbarNavAltMarkup'));
+// function toogleNavBar() {
+//     menuMin.toggle();
+// };
+
+//document.querySelector('#navbarNavAltMarkup').modal('toggle');
 
 function afficheJeu(type) {
 
+    // const modal = document.querySelector('#navbarNavAltMarkup');
+    // function toggleNavBar() {
+    //     modal.toggle();
+    // };
+    let collapsible = new bootstrap.Collapse('#navbarNavAltMarkup', {
+        toggle: false
+    });
+    // collapsible.hide();
     let lesFilms = document.querySelectorAll('.films');;
     let lesSeries = document.querySelectorAll('.series');
+
+    for (i = 0; i < lesFilms.length; i++) {
+        lesFilms[i].style = "display : block;";
+    };
+    for (i = 0; i < lesSeries.length; i++) {
+           lesSeries[i].style = "display : block;";
+    };
+
     if (type == 'S') {
         // console.log('Series');
 
         for (i = 0; i < lesFilms.length; i++) {
             lesFilms[i].style = "display : none;";
         };
-        for (i = 0; i < lesSeries.length; i++) {
-            lesSeries[i].style = "display : block;";
-        };
+        // toggleNavBar();
+        
+    } 
+    else if (type == 'F') {
 
-    } else if (type == 'F') {
-
-        for (i = 0; i < lesFilms.length; i++) {
-            lesFilms[i].style = "display : block;";
-        };
         for (i = 0; i < lesSeries.length; i++) {
             lesSeries[i].style = "display : none;";
         };
 
-    } else if (type == 'T') {
-
-        for (i = 0; i < lesFilms.length; i++) {
-            lesFilms[i].style = "display : block;";
-        };
-        for (i = 0; i < lesSeries.length; i++) {
-            lesSeries[i].style = "display : block;";
-        };
+    } 
+    else if (type == 'A') {
+        window.scroll({
+            top: 0
+        });
     };
-}
+    
+    collapsible.hide();
+};
+
 
 /* */
 let divFilmCherche = document.getElementById('filmcherche');
@@ -249,9 +267,6 @@ getData().then(data => {
 let reponseATrouver = "";
 let identATrouver = "";
 let modale = document.getElementById("modale");
-// function placeFocus() {
-//     document.getElementById("reponse").focus();
-// };
 
 function masqueModale() {
     setTimeout(() => {
@@ -271,18 +286,13 @@ function afficheModale(ident, Image, Titre) {
     identATrouver = ident;
     reponseATrouver = Titre;
 
-    //let modale = document.getElementById("modale");
     let imgModal = document.getElementById("image");
 
     modale.addEventListener("submit", verifReponse);
 
-
     modale.style.visibility = "visible";
-    //modale.style.backgroundImage = `url(${imgSrc})`;
     imgModal.style.backgroundImage = `url(${imgSrc})`;
-    window.scroll({
-        top: 0
-    });
+    
 
     // retour : Masquer la div si clique sur image  ?
     imgModal.addEventListener("click", function () {
@@ -291,7 +301,11 @@ function afficheModale(ident, Image, Titre) {
 
     document.getElementById("reponse").value = "";
     document.getElementById("reponse").focus();
-}
+    
+    window.scroll({
+        top: 0
+    });
+};
 
 let libResultat = document.getElementById("resultat");
 
@@ -382,7 +396,12 @@ async function afficheInfos(id, titre, idtmdb) {
     // valeur de largeur w342 , w500, w780 , 
     const bigImage = API_IMAGE_ROOT + 'w780' + result.poster_path;
 
+    modale.style.visibility = "hidden";
     divInfos.style.backgroundImage = 'url(' + bigImage + ')';
     titInfos.innerHTML = titre;
+    
+    window.scroll({
+        top: 0
+    });
 
 };
