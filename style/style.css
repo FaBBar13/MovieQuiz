@@ -156,15 +156,13 @@ nav img {
   align-items: flex-start;
   justify-content: flex-end;
   background-color: #141414;
-  background-image: url("/images/movies/soupe_affiche.jpg");
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   padding-left: 18px;
   color: white;
 }
 .infos h2 {
-  font-family: "Poppins";
   font-style: normal;
   font-weight: 900;
   font-size: 45px;
@@ -175,31 +173,35 @@ nav img {
   text-transform: uppercase;
   margin-bottom: 35px;
 }
+.infos button {
+  width: 350px;
+  height: 60px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+}
+.infos button img {
+  width: 28px;
+  height: 30px;
+}
 .infos #btn-ba {
   margin-bottom: 23px;
   padding: 0 10px;
   background: #FFFFFF;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-}
-.infos #btn-ba img {
-  width: 28px;
-  height: 30px;
+  font-weight: 500;
+  font-size: 23px;
+  line-height: 35px;
 }
 .infos #btn-info {
+  width: 236px;
   padding: 0 15px;
   margin-bottom: 15px;
-  background: rgba(109, 109, 110, 0.7);
-  border-radius: 4px;
+  background: rgba(109, 109, 110, 0.6980392157);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .infos #btn-info img {
-  width: 28px;
-  height: 30px;
+  margin-left: 29px;
+  margin-right: 15px;
 }
 
 .contenu {
@@ -272,6 +274,7 @@ nav img {
   height: 100%;
   background-repeat: no-repeat;
   background-position: center center;
+  background-size: cover;
 }
 #modale h3 {
   margin-top: 20px;

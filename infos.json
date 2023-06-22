@@ -4,49 +4,49 @@
             {
                 "identifiant": "F1",
                 "title": "Interstellar",
-                "picture": "./images/movies/interstellar.jpg",
+                "picture": "./images/movies/interstellar_2.jpg",
                 "idtmdb": "157336"
             },
             {
                 "identifiant": "F2",
                 "title": "Iron Man",
-                "picture": "./images/movies/ironman.jpg",
+                "picture": "./images/movies/ironman_2.jpg",
                 "idtmdb": "1726"
             },
             {
                 "identifiant": "F3",
                 "title": "Matrix",
-                "picture": "./images/movies/matrix.jpg",
+                "picture": "./images/movies/matrix_2.jpg",
                 "idtmdb": "603"
             },
             {
                 "identifiant": "F4",
                 "title": "Le Pacte des Loups",
-                "picture": "./images/movies/pactedesloups.jpg",
+                "picture": "./images/movies/pactedesloups_2.jpg",
                 "idtmdb": "6312"
             },
             {
                 "identifiant": "F5",
                 "title": "Pulp Fiction",
-                "picture": "./images/movies/pulpfiction.jpg",
+                "picture": "./images/movies/pulpfiction_2.jpg",
                 "idtmdb": "680"
             },
             {
                 "identifiant": "F6",
                 "title": "Rambo",
-                "picture": "./images/movies/rambo.jpg",
+                "picture": "./images/movies/rambo_2.jpg",
                 "idtmdb": "1368"
             },
             {
                 "identifiant": "F7",
                 "title": "Shining",
-                "picture": "./images/movies/shining.jpg",
+                "picture": "./images/movies/shining_2.jpg",
                 "idtmdb": "694"
             },
             {
                 "identifiant": "F8",
-                "title": "Spiderman",
-                "picture": "./images/movies/spiderman.jpg",
+                "title": "Spider-man",
+                "picture": "./images/movies/spiderman_2.jpg",
                 "idtmdb": "557"
             },
             {
