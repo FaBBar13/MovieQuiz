@@ -1,6 +1,5 @@
 
 
-
 let divLoader = document.getElementById("loader");
 let coteGauche = document.getElementById("gauche");
 let coteDroite = document.getElementById("droite");
@@ -20,15 +19,10 @@ function afficheFin() {
 
 let identDejaTrouves = JSON.parse(localStorage.getItem("identTrouve"));
 if (identDejaTrouves === null) {
-    console.log('pas de local');
     let tabTrouve = [];
-    //tabTrouve.push('F0');
     localStorage.setItem("identTrouve", JSON.stringify(tabTrouve));
     identDejaTrouves = JSON.parse(localStorage.getItem("identTrouve"));
-
 };
-console.log(identDejaTrouves);
-
 
 //const menuMin = new bootstrap.Modal(document.getElementById('navbarNavAltMarkup'));
 // function toogleNavBar() {
@@ -154,6 +148,7 @@ getData().then(data => {
                 let divFilm = document.createElement("div");
                 let imgFilm = document.createElement("img");
 
+                let tmpIdTmdb = tableauRoot[i].idtmdb;
                 divFilm.className = "swiper-slide";
                 divFilm.dataset.id = tableauRoot[i].identifiant;
 
@@ -164,7 +159,7 @@ getData().then(data => {
 
                 divFilm.appendChild(imgFilm);
 
-                divFilm.addEventListener('click', e => afficheModale(divFilm.dataset.id, imgFilm.src, titreFilm));
+                divFilm.addEventListener('click', e => afficheModale(divFilm.dataset.id, imgFilm.src, titreFilm ,tmpIdTmdb));
                 root.appendChild(divFilm);
             }
         };
@@ -266,33 +261,22 @@ getData().then(data => {
 
 let reponseATrouver = "";
 let identATrouver = "";
+let idTmdbATrouver = "";
 let modale = document.getElementById("modale");
 
-function masqueModale() {
-    setTimeout(() => {
 
-        modale.style.visibility = " hidden;";
-    }, 3000)
-};
-
-
-function afficheModale(ident, Image, Titre) {
-
-
-
-    //placeFocus() : ? why
+function afficheModale(ident, Image, Titre , idtmdb) {
 
     let imgSrc = Image;
     identATrouver = ident;
     reponseATrouver = Titre;
-
+    idTmdbATrouver = idtmdb;
     let imgModal = document.getElementById("image");
 
     modale.addEventListener("submit", verifReponse);
 
     modale.style.visibility = "visible";
     imgModal.style.backgroundImage = `url(${imgSrc})`;
-    
 
     // retour : Masquer la div si clique sur image  ?
     imgModal.addEventListener("click", function () {
@@ -307,12 +291,12 @@ function afficheModale(ident, Image, Titre) {
     });
 };
 
-let libResultat = document.getElementById("resultat");
 
 
 function verifReponse() {
-
+    console.log('timer');
     let reponseSaisie = document.getElementById("reponse").value;
+    
 
 
     /* */
@@ -329,30 +313,41 @@ function verifReponse() {
     tmpTit = tmpTit.replaceAll('-', '');
     //alert('=>' + reponseSaisie +" = " + tmpSai + ' <=> ' + tmpTit + '  ' + reponseATrouver + " id = " + identATrouver);
 
-    // libResultat.style = 'visibility : visible;'
+    //libResultat.style.display = 'block;'
 
-
+    libResultat.style.visibility = 'visible;'
     if (tmpSai == tmpTit) {
         //console.log('Bonne Réponse');
-
-        libResultat.style = 'color:green;'
+        libResultat.style.visibility = 'visible;'
+        libResultat.style = 'background:green;'
         libResultat.innerHTML = "BONNE REPONSE";
         let locStorage = JSON.parse(localStorage.getItem("identTrouve"));
         locStorage.push(identATrouver);
         localStorage.setItem("identTrouve", JSON.stringify(locStorage));
 
+        let newAff = [];
+   
+        newAff.push ( identATrouver , reponseATrouver , idTmdbATrouver);
+        localStorage.setItem("dernierAffiche", JSON.stringify(newAff));
+    
     }
     else {
         //console.log('Mauvaise Réponse');
-
-        libResultat.style = 'color:red;'
+        libResultat.style.visibility = 'visible;'
+        libResultat.style = 'background:red;'
         libResultat.innerHTML = "MAUVAISE REPONSE";
 
     };
 
+    setTimeout(afficheReponse,3000);
 
-    //alert('visible');
+}
+let libResultat = document.getElementById("resultat");
 
+function afficheReponse() {
+    console.log('afficheReponse');
+    
+    modale.style.visibility = "hidden";
 
 };
 
@@ -366,10 +361,11 @@ let btnInfo = document.getElementById('btn-info');
 // let idTMDB = document.getElementById('id-tmdb');
 // idTMDB.textContent = "9317";
 
-titInfos.textContent = "La Soupe aux Choux";
+//titInfos.textContent = "La Soupe aux Choux";
 
 //btnInfo.addEventListener("click", afficheInfos);
 
+let afficheDefaut = JSON.parse(localStorage.getItem("dernierAffiche"));
 
 const API_IMAGE_ROOT = '//image.tmdb.org/t/p/';
 const API_ROOT = 'https://api.themoviedb.org/3';
@@ -380,7 +376,6 @@ const api_options = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1YzdjNGUzOTc4ZTk2YjI1Y2UwMGFlNjliNDlmZGRiYiIsInN1YiI6IjY0OTAxMjBmYzJmZjNkMDBmZmJjOGI4NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.F6AMNu8DQklsNyGViYL1fEvgDaOaxnY9auZe5li8VGk'
     }
 };
-
 
 
 async function afficheInfos(id, titre, idtmdb) {
@@ -399,9 +394,24 @@ async function afficheInfos(id, titre, idtmdb) {
     modale.style.visibility = "hidden";
     divInfos.style.backgroundImage = 'url(' + bigImage + ')';
     titInfos.innerHTML = titre;
-    
+    //console.log(afficheDefaut[0] + '/' + afficheDefaut[1]);
+
+    let newAff = [];
+    newAff.push ( id , titre , idtmdb);
+    localStorage.setItem("dernierAffiche", JSON.stringify(newAff));
+
+
     window.scroll({
         top: 0
     });
 
+};
+
+if (afficheDefaut === null) {
+    let derAff = [];
+    derAff.push('F0','La Soupe aux Choux',9317);
+    localStorage.setItem("dernierAffiche", JSON.stringify(derAff));
+    afficheInfos('F0', 'La Soupe aux Choux', 9317);
+} else {
+    afficheInfos(afficheDefaut[0], afficheDefaut[1] , afficheDefaut[2]);
 };
