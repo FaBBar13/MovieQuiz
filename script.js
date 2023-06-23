@@ -24,23 +24,13 @@ if (identDejaTrouves === null) {
     identDejaTrouves = JSON.parse(localStorage.getItem("identTrouve"));
 };
 
-//const menuMin = new bootstrap.Modal(document.getElementById('navbarNavAltMarkup'));
-// function toogleNavBar() {
-//     menuMin.toggle();
-// };
-
-//document.querySelector('#navbarNavAltMarkup').modal('toggle');
-
 function afficheJeu(type) {
 
-    // const modal = document.querySelector('#navbarNavAltMarkup');
-    // function toggleNavBar() {
-    //     modal.toggle();
-    // };
+
     let collapsible = new bootstrap.Collapse('#navbarNavAltMarkup', {
         toggle: false
     });
-    // collapsible.hide();
+
     let lesFilms = document.querySelectorAll('.films');;
     let lesSeries = document.querySelectorAll('.series');
 
@@ -48,31 +38,29 @@ function afficheJeu(type) {
         lesFilms[i].style = "display : block;";
     };
     for (i = 0; i < lesSeries.length; i++) {
-           lesSeries[i].style = "display : block;";
+        lesSeries[i].style = "display : block;";
     };
 
     if (type == 'S') {
-        // console.log('Series');
 
         for (i = 0; i < lesFilms.length; i++) {
             lesFilms[i].style = "display : none;";
         };
-        // toggleNavBar();
-        
-    } 
+
+    }
     else if (type == 'F') {
 
         for (i = 0; i < lesSeries.length; i++) {
             lesSeries[i].style = "display : none;";
         };
 
-    } 
+    }
     else if (type == 'A') {
         window.scroll({
             top: 0
         });
     };
-    
+
     collapsible.hide();
 };
 
@@ -99,6 +87,18 @@ async function getData() {
     return cached ??= await fetch('infos.json')     // ca retourne une réponse
         .then(resp => resp.json());                 // ca retourne le json parsé en object
 }
+
+
+const createSwiper = (swiper) => new Swiper(swiper,
+    {
+        direction: "horizontal",
+        loop: true,
+        grabCursor: true,
+        centeredSlides: true,
+        slidesPerView: "auto"
+    }
+);
+
 
 getData().then(data => {
 
@@ -159,35 +159,13 @@ getData().then(data => {
 
                 divFilm.appendChild(imgFilm);
 
-                divFilm.addEventListener('click', e => afficheModale(divFilm.dataset.id, imgFilm.src, titreFilm ,tmpIdTmdb));
+                divFilm.addEventListener('click', e => afficheModale(divFilm.dataset.id, imgFilm.src, titreFilm, tmpIdTmdb));
                 root.appendChild(divFilm);
             }
         };
 
-        return new Swiper(root.parentElement,
-            {
-                direction: "horizontal",
-                loop: true,
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 3,
-                spaceBetween: 3,
-                breakpoints: {
-                    // 640: {
-                    //     slidesPerView: 3
-                    // },
-                    768: {
-                        slidesPerView: 4,
-                    },
-                    992: {
-                        slidesPerView: 6,
-                    },
-                    1200: {
-                        slidesPerView: 8,
-                    },
-                },
-            }
-        );
+        return createSwiper(root.parentElement);
+
 
     };
     function genereTrouve(root, tableauRoot) {
@@ -206,7 +184,6 @@ getData().then(data => {
 
             titreFilm.innerHTML = tableauRoot[i].title;
 
-
             divFilm.appendChild(imgFilm);
             divFilm.appendChild(titreFilm);
 
@@ -214,32 +191,7 @@ getData().then(data => {
             divFilm.addEventListener('click', e => afficheInfos(divFilm.dataset.id, titreFilm.innerHTML, idtmdb));
             root.appendChild(divFilm);
         }
-        return new Swiper(root.parentElement,
-            {
-                direction: "horizontal",
-                loop: true,
-                grabCursor: true,
-                centeredSlides: true,
-                slidesPerView: 3,
-                spaceBetween: 3,
-                breakpoints: {
-                    // 640: {
-                    //     slidesPerView: 3
-                    // },
-                    768: {
-                        slidesPerView: 4,
-                    },
-                    992: {
-                        slidesPerView: 6,
-                    },
-                    1200: {
-                        slidesPerView: 8,
-                    },
-                },
-            }
-        );
-
-
+        return createSwiper(root.parentElement);
 
     };
 
@@ -253,19 +205,13 @@ getData().then(data => {
 });
 
 
-
-
-
-
-
-
 let reponseATrouver = "";
 let identATrouver = "";
 let idTmdbATrouver = "";
 let modale = document.getElementById("modale");
 
 
-function afficheModale(ident, Image, Titre , idtmdb) {
+function afficheModale(ident, Image, Titre, idtmdb) {
 
     let imgSrc = Image;
     identATrouver = ident;
@@ -285,19 +231,19 @@ function afficheModale(ident, Image, Titre , idtmdb) {
 
     document.getElementById("reponse").value = "";
     document.getElementById("reponse").focus();
-    
+
     window.scroll({
         top: 0
     });
 };
 
+let libResultat = document.getElementById("resultat");
 
+function verifReponse(e) {
+    //console.log('timer');
 
-function verifReponse() {
-    console.log('timer');
+    e.preventDefault();
     let reponseSaisie = document.getElementById("reponse").value;
-    
-
 
     /* */
     let tmpSai = "";
@@ -318,7 +264,7 @@ function verifReponse() {
     libResultat.style.visibility = 'visible;'
     if (tmpSai == tmpTit) {
         //console.log('Bonne Réponse');
-        libResultat.style.visibility = 'visible;'
+        //libResultat.style.visibility = 'visible;'
         libResultat.style = 'background:green;'
         libResultat.innerHTML = "BONNE REPONSE";
         let locStorage = JSON.parse(localStorage.getItem("identTrouve"));
@@ -326,31 +272,35 @@ function verifReponse() {
         localStorage.setItem("identTrouve", JSON.stringify(locStorage));
 
         let newAff = [];
-   
-        newAff.push ( identATrouver , reponseATrouver , idTmdbATrouver);
+
+        newAff.push(identATrouver, reponseATrouver, idTmdbATrouver);
         localStorage.setItem("dernierAffiche", JSON.stringify(newAff));
-    
+
+        // fait un refresh de la page pour MAJ des swipers
+        setTimeout(() => {
+            location.replace('index.html');
+        }, 3000);
+
     }
     else {
         //console.log('Mauvaise Réponse');
-        libResultat.style.visibility = 'visible;'
+        //libResultat.style.visibility = 'visible;'
         libResultat.style = 'background:red;'
         libResultat.innerHTML = "MAUVAISE REPONSE";
 
+        setTimeout(() => {
+            document.getElementById("reponse").value = '';
+            document.getElementById("reponse").focus();
+            libResultat.style.visibility = 'hidden';
+
+        }, 3000);
+
+
     };
 
-    setTimeout(afficheReponse,3000);
+
 
 }
-let libResultat = document.getElementById("resultat");
-
-function afficheReponse() {
-    console.log('afficheReponse');
-    
-    modale.style.visibility = "hidden";
-
-};
-
 
 
 let divInfos = document.querySelector('.infos');
@@ -358,12 +308,17 @@ let titInfos = document.querySelector('.infos h2');
 
 let btnBA = document.getElementById('btn-ba');
 let btnInfo = document.getElementById('btn-info');
-// let idTMDB = document.getElementById('id-tmdb');
-// idTMDB.textContent = "9317";
 
-//titInfos.textContent = "La Soupe aux Choux";
 
-//btnInfo.addEventListener("click", afficheInfos);
+let idDetails = "";
+let titreDetails = document.getElementById("titreDetails");
+let idTmdbDetails = "";
+let synopsysDetail = document.getElementById("synopsys");
+let imgDetail = "";
+
+
+btnInfo.addEventListener("click", afficheDetails);
+let modaleDetails = document.getElementById("details");
 
 let afficheDefaut = JSON.parse(localStorage.getItem("dernierAffiche"));
 
@@ -383,21 +338,90 @@ async function afficheInfos(id, titre, idtmdb) {
     const endpoint = id.startsWith('F') ? '/movie/' : '/tv/';
 
     const url = new URL(API_ROOT + endpoint + idtmdb);
+    const urlFind = new URL(API_ROOT + endpoint + idtmdb + "/credits");
+
+
     url.searchParams.append('language', 'fr-FR');
+    // urlFind.searchParams.append('language', 'fr-FR');
 
     const result = await fetch(url, api_options).then(resp => resp.json());
+    const resultFind = await fetch(urlFind, api_options).then(reponse => reponse.json());
 
-    console.log(result);
+
+
+
+
+    //console.log(resultFind);
+
+    //console.log(resultFind.cast.length);
+    let maxCast = 0;
+    if (resultFind.cast.length > 8) {
+        maxCast = 8;
+    } else {
+        maxCast = resultFind.cast.length;
+    };
+
+    let tabCasting = [];
+    let divCasting = document.getElementById("acteurs");
+    for (x = 0; x < maxCast; x++) {
+        let nom = resultFind.cast[x].name;
+        let perso = resultFind.cast[x].character;
+        let cheminPhoto = API_IMAGE_ROOT + 'w185' + resultFind.cast[x].profile_path;
+        //let cheminPhoto = API_IMAGE_ROOT + 'w185' + resultFind.cast[x].profile_path;
+        tabCasting.push(
+            {
+                "nom": nom,
+                "perso": perso,
+                "photo": cheminPhoto
+            });
+    };
+    function genereCasting() {
+        for (z = 0; z < tabCasting.length; z++) {
+            let divActeur = document.createElement("div");
+            let imgActeur = document.createElement("img");
+            let nomActeur = document.createElement("h3");
+            let nomPerso = document.createElement("h4");
+
+            divActeur.className = "swiper-slide";
+            imgActeur.src = tabCasting[z].photo;
+            nomActeur.innerHTML = tabCasting[z].nom;
+            nomPerso.innerHTML = tabCasting[z].perso;
+
+            divActeur.appendChild(imgActeur);
+            divActeur.appendChild(nomActeur);
+            divActeur.appendChild(nomPerso);
+
+            divCasting.appendChild(divActeur);
+        }
+        return createSwiper(divCasting.parentElement);
+
+    };
+    genereCasting();
+
+
     // valeur de largeur w342 , w500, w780 , 
-    const bigImage = API_IMAGE_ROOT + 'w780' + result.poster_path;
+
+    const affiche = API_IMAGE_ROOT + 'w780' + result.poster_path;
+    const backdrop = API_IMAGE_ROOT + 'w780' + result.backdrop_path;
+
+
+    console.log(tabCasting);
 
     modale.style.visibility = "hidden";
-    divInfos.style.backgroundImage = 'url(' + bigImage + ')';
+    modaleDetails.style.visibility = "hidden";
+    divInfos.style.backgroundImage = 'url(' + affiche + ')';
     titInfos.innerHTML = titre;
     //console.log(afficheDefaut[0] + '/' + afficheDefaut[1]);
 
+    idDetails = id;
+    titreDetails.innerHTML = titre;
+    idTmdbDetails = idtmdb;
+
+    modaleDetails.style.backgroundImage = 'url(' + backdrop + ')';
+    synopsysDetail.innerHTML = result.overview;
+
     let newAff = [];
-    newAff.push ( id , titre , idtmdb);
+    newAff.push(id, titre, idtmdb);
     localStorage.setItem("dernierAffiche", JSON.stringify(newAff));
 
 
@@ -409,9 +433,23 @@ async function afficheInfos(id, titre, idtmdb) {
 
 if (afficheDefaut === null) {
     let derAff = [];
-    derAff.push('F0','La Soupe aux Choux',9317);
+    derAff.push('F0', 'La Soupe aux Choux', 9317);
     localStorage.setItem("dernierAffiche", JSON.stringify(derAff));
     afficheInfos('F0', 'La Soupe aux Choux', 9317);
 } else {
-    afficheInfos(afficheDefaut[0], afficheDefaut[1] , afficheDefaut[2]);
+    afficheInfos(afficheDefaut[0], afficheDefaut[1], afficheDefaut[2]);
 };
+
+
+
+
+function afficheDetails() {
+    //console.log(idDetails, titreDetails, idTmdbDetails);
+    modaleDetails.style.visibility = "visible";
+
+
+
+    modaleDetails.addEventListener("click", function () {
+        modaleDetails.style.visibility = "hidden";
+    });
+}

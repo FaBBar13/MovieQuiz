@@ -122,7 +122,6 @@ header {
 }
 
 nav {
-  height: 150px;
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
 }
 nav .logo {
@@ -221,7 +220,6 @@ nav .menu-min {
 
 .swiper-wrapper {
   display: flex;
-  justify-content: center;
   cursor: grab;
 }
 .swiper-wrapper .swiper-slide {
@@ -230,6 +228,8 @@ nav .menu-min {
   align-items: center;
   justify-content: center;
   text-align: center;
+  width: auto;
+  margin-right: 10px;
 }
 
 .div-interne {
@@ -288,7 +288,6 @@ nav .menu-min {
 }
 #modale .div-reponse label {
   color: white;
-  size: 45px;
   font-weight: 900;
 }
 #modale .div-reponse input {
@@ -308,6 +307,59 @@ nav .menu-min {
   color: white;
   width: 260px;
   height: 30px;
+}
+
+#details {
+  visibility: hidden;
+  background-color: #141414;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 80vh;
+  z-index: 3;
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  color: white;
+}
+#details h3 {
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 900;
+}
+#details p {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0) 100%);
+  border: solid 1px yellow;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: italic;
+  max-width: 80vw;
+  max-height: 40vh;
+  margin: 0 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#details .casting {
+  border: solid 1px red;
+  max-width: 80vw;
+  margin: 0 auto;
+}
+#details .casting h3 {
+  font-size: 18px;
+  font-weight: 500;
+}
+#details .casting h4 {
+  font-size: 16px;
+}
+#details .casting img {
+  height: 180px;
+  width: auto;
 }
 
 footer {
@@ -345,5 +397,14 @@ footer {
     color: white;
     width: 240px;
     height: 60px;
+  }
+  #details {
+    background-size: auto 100%;
+    background-position: center center;
+    align-items: center;
+  }
+  #details .casting {
+    width: auto;
+    height: 250px;
   }
 }/*# sourceMappingURL=style.css.map */
