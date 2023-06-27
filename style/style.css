@@ -117,29 +117,42 @@ body {
 }
 header {
   width: 100%;
+  position: absolute;
   position: fixed;
   top: 0;
 }
 
+@keyframes afficheJeu {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 nav {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
 }
-nav .logo {
-  border: solid 1px red;
-  height: 30px;
-  width: 100px;
-  display: flex;
-  align-items: center;
+nav .interrogation {
+  margin-right: 10px;
 }
-nav img {
-  height: 100%;
-  width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+nav .logo {
+  margin-right: auto;
+  height: 50px;
+  width: 40px;
+  overflow: hidden;
+}
+nav .logo img {
+  height: 50px;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 nav .menu-min {
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0) 100%);
   text-align: center;
+}
+nav .menu-min a {
+  text-decoration: underline;
+  color: white;
 }
 
 .zonejeu {
@@ -158,10 +171,10 @@ nav .menu-min {
   align-items: flex-start;
   justify-content: flex-end;
   background-color: #141414;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding-left: 18px;
+  padding-left: 5px;
   color: white;
 }
 .infos h2 {
@@ -176,7 +189,8 @@ nav .menu-min {
   margin-bottom: 35px;
 }
 .infos button {
-  width: 350px;
+  padding: 5px;
+  width: 310px;
   height: 60px;
   border-radius: 4px;
   display: flex;
@@ -188,7 +202,6 @@ nav .menu-min {
 }
 .infos #btn-ba {
   margin-bottom: 23px;
-  padding: 0 10px;
   background: #FFFFFF;
   font-weight: 500;
   font-size: 23px;
@@ -196,7 +209,6 @@ nav .menu-min {
 }
 .infos #btn-info {
   width: 236px;
-  padding: 0 15px;
   margin-bottom: 15px;
   background: rgba(109, 109, 110, 0.6980392157);
   color: white;
@@ -208,10 +220,10 @@ nav .menu-min {
 
 .contenu {
   margin-bottom: 10px;
+  text-align: center;
 }
 .contenu img {
-  height: 180px;
-  aspect-ratio: 2/3;
+  height: 240px;
   -o-object-fit: cover;
      object-fit: cover;
   -o-object-position: center center;
@@ -219,7 +231,10 @@ nav .menu-min {
 }
 
 .swiper-wrapper {
+  width: 80vw;
+  margin: 0 auto;
   display: flex;
+  align-items: center;
   cursor: grab;
 }
 .swiper-wrapper .swiper-slide {
@@ -227,24 +242,15 @@ nav .menu-min {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   width: auto;
+  max-width: 180px;
   margin-right: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
-
-.div-interne {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.div-interne a {
-  position: absolute;
-}
-
-.swiper-slide:hover {
-  scale: 1.2;
+.swiper-wrapper .swiper-slide h3, .swiper-wrapper .swiper-slide h4 {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0) 100%);
 }
 
 .cherche {
@@ -264,7 +270,6 @@ nav .menu-min {
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: end;
   align-items: center;
   top: 0;
   left: 0;
@@ -285,9 +290,9 @@ nav .menu-min {
   flex-direction: column;
   width: 375px;
   align-items: center;
+  color: white;
 }
 #modale .div-reponse label {
-  color: white;
   font-weight: 900;
 }
 #modale .div-reponse input {
@@ -295,7 +300,6 @@ nav .menu-min {
   padding-left: 10px;
   width: 375px;
   border: none;
-  outline: none;
   border-bottom: 3px solid white;
   background: transparent;
 }
@@ -335,7 +339,6 @@ nav .menu-min {
 }
 #details p {
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 80%, rgba(0, 0, 0, 0) 100%);
-  border: solid 1px yellow;
   font-size: 16px;
   font-weight: 600;
   font-style: italic;
@@ -346,8 +349,7 @@ nav .menu-min {
   text-overflow: ellipsis;
 }
 #details .casting {
-  border: solid 1px red;
-  max-width: 80vw;
+  max-width: 90vw;
   margin: 0 auto;
 }
 #details .casting h3 {
@@ -355,7 +357,7 @@ nav .menu-min {
   font-weight: 500;
 }
 #details .casting h4 {
-  font-size: 16px;
+  font-size: 12px;
 }
 #details .casting img {
   height: 180px;
@@ -368,43 +370,87 @@ footer {
   color: white;
 }
 
+/* */
 @media screen and (min-width: 640px) {
-  nav img {
-    width: 20px;
-    height: 20px;
+  nav {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0) 100%);
+  }
+  nav .menu-min .nav-link {
+    text-decoration: none;
+  }
+  nav .logo {
+    width: auto;
   }
   nav .logo img {
-    width: 100px;
-    height: 20px;
+    height: 50px;
   }
-  .zonejeu {
-    color: black;
+  nav .interrogation img {
+    display: none;
+  }
+  nav .cmtjouer {
+    color: white;
+    margin-left: auto;
+  }
+  nav .cmtjouer img {
+    margin-right: 10px;
+  }
+  .contenu {
+    width: 80vw;
+    text-align: start;
+    margin: 0 auto;
+  }
+  .contenu h3 {
+    margin-left: 15px;
   }
   .contenu img {
-    height: 240px;
+    height: 360px;
+    width: auto;
   }
   .infos {
     height: 80vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 20px;
+    margin-bottom: 20px;
   }
   #modale {
-    height: 80vh;
+    height: 81vh;
+    text-align: center;
   }
   #modale .div-reponse {
-    flex-direction: row;
+    margin-top: 15px;
+    width: 80vw;
+    display: inline;
+  }
+  #modale .div-reponse input {
+    color: white;
   }
   #modale #resultat {
-    padding-top: 12px;
     color: white;
-    width: 240px;
-    height: 60px;
+    height: auto;
+    width: auto;
+    padding: 25px 50px;
+  }
+  #modale .image {
+    background-size: contain;
   }
   #details {
     background-size: auto 100%;
     background-position: center center;
-    align-items: center;
+  }
+  #details h3 {
+    font-size: 50px;
   }
   #details .casting {
+    display: flex;
+    flex-direction: column;
+    border: solid 1px white;
     width: auto;
     height: 250px;
+  }
+  #details .casting img {
+    height: 240px;
+    width: auto;
   }
 }/*# sourceMappingURL=style.css.map */

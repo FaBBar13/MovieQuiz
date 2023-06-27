@@ -4,28 +4,38 @@ let divLoader = document.getElementById("loader");
 let coteGauche = document.getElementById("gauche");
 let coteDroite = document.getElementById("droite");
 let divFooter = document.querySelector("footer");
+let divHeader = document.querySelector("header");
 
 let zoneJeu = document.querySelector('.zonejeu');
 
-function afficheFin() {
-    divLoader.style.display = "none";
-    zoneJeu.style.display = "flex";
-    divFooter.style.display = "block";
 
-}
-// document.onload = setTimeout(afficheFin, 3700);
+// function afficheFinLoader() {
+//     divLoader.style.display = "none";
+//     zoneJeu.style.display = "flex";
+//     divHeader.style.display = "block";
+//     divFooter.style.display = "block";
+// };
+// document.onload = setTimeout(afficheFinLoader, 3700);
 
 /* */
 
+
 let identDejaTrouves = JSON.parse(localStorage.getItem("identTrouve"));
+
 if (identDejaTrouves === null) {
     let tabTrouve = [];
     localStorage.setItem("identTrouve", JSON.stringify(tabTrouve));
     identDejaTrouves = JSON.parse(localStorage.getItem("identTrouve"));
 };
 
-function afficheJeu(type) {
 
+let btnToggle = document.querySelector("button");
+btnToggle.addEventListener("click" , function() {
+    btnToggle.style = "border:none!important;";
+});
+
+
+function afficheJeu(type) {
 
     let collapsible = new bootstrap.Collapse('#navbarNavAltMarkup', {
         toggle: false
@@ -96,6 +106,13 @@ const createSwiper = (swiper) => new Swiper(swiper,
         grabCursor: true,
         centeredSlides: true,
         slidesPerView: "auto"
+        // slidesPerView : 4,
+        // breakpoints: {
+        //     375: {
+        //         slidesPerView: 5,
+        //         spaceBetween: 30
+        //       }
+        // }
     }
 );
 
@@ -240,8 +257,7 @@ function afficheModale(ident, Image, Titre, idtmdb) {
 let libResultat = document.getElementById("resultat");
 
 function verifReponse(e) {
-    //console.log('timer');
-
+    
     e.preventDefault();
     let reponseSaisie = document.getElementById("reponse").value;
 
@@ -250,12 +266,12 @@ function verifReponse(e) {
     let tmpTit = "";
     tmpSai = reponseSaisie.toLowerCase();
     tmpSai = ((tmpSai.replaceAll('é', 'e')).replaceAll('è', 'e')).replaceAll(' ', '');
-    tmpSai = tmpSai.replaceAll('à', 'a');
+    tmpSai = (tmpSai.replaceAll('à', 'a')).replaceAll('ô','o');
     tmpSai = tmpSai.replaceAll('-', '');
 
     tmpTit = reponseATrouver.toLowerCase();
     tmpTit = ((tmpTit.replaceAll('é', 'e')).replaceAll('è', 'e')).replaceAll(' ', '');
-    tmpTit = tmpTit.replaceAll('à', 'a');
+    tmpTit = (tmpTit.replaceAll('à', 'a')).replaceAll('ô','o');
     tmpTit = tmpTit.replaceAll('-', '');
     //alert('=>' + reponseSaisie +" = " + tmpSai + ' <=> ' + tmpTit + '  ' + reponseATrouver + " id = " + identATrouver);
 
@@ -263,8 +279,7 @@ function verifReponse(e) {
 
     libResultat.style.visibility = 'visible;'
     if (tmpSai == tmpTit) {
-        //console.log('Bonne Réponse');
-        //libResultat.style.visibility = 'visible;'
+       
         libResultat.style = 'background:green;'
         libResultat.innerHTML = "BONNE REPONSE";
         let locStorage = JSON.parse(localStorage.getItem("identTrouve"));
@@ -283,8 +298,7 @@ function verifReponse(e) {
 
     }
     else {
-        //console.log('Mauvaise Réponse');
-        //libResultat.style.visibility = 'visible;'
+        
         libResultat.style = 'background:red;'
         libResultat.innerHTML = "MAUVAISE REPONSE";
 
@@ -363,6 +377,8 @@ async function afficheInfos(id, titre, idtmdb) {
 
     let tabCasting = [];
     let divCasting = document.getElementById("acteurs");
+    
+    divCasting.innerHTML = "";
     for (x = 0; x < maxCast; x++) {
         let nom = resultFind.cast[x].name;
         let perso = resultFind.cast[x].character;
@@ -375,6 +391,7 @@ async function afficheInfos(id, titre, idtmdb) {
                 "photo": cheminPhoto
             });
     };
+
     function genereCasting() {
         for (z = 0; z < tabCasting.length; z++) {
             let divActeur = document.createElement("div");

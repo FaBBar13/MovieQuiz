@@ -18,7 +18,7 @@
     <!-- lien Swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
-    <link rel="stylesheet" href="/style/style.css">
+    <link rel="stylesheet" href="./style/style.css">
     <title>MovieQuiz</title>
 </head>
 
@@ -43,22 +43,25 @@
                 <div class="logo">
                     <a class="navbar-brand" href="#"><img src="/images/logo_moviequiz.png" alt=""></a>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                
+                    <a class="nav-link interrogation" href="#"><img src="/images/interrogation.png"></a>
+                    <button class="navbar-toggler " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                
                 <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
                     <div class="navbar-nav menu-min">
                         <a class="nav-link" onclick="afficheJeu('A')" aria-current="page" href="#">Accueil</a>
                         <a class="nav-link" onclick="afficheJeu('S')" href="#">Séries</a>
                         <a class="nav-link" onclick="afficheJeu('F')" href="#">Films</a>
                         <a class="nav-link" onclick="afficheJeu('T')" href="#">Tous les Films et Séries</a>
-                        <div class="d-sm-flex d-none d-lg-block ">
-                            <!-- <a class="nav-link" href="#">?</a> -->
-                            <a class="nav-link" href="#"><img src="/images/interrogation.png">Comment jouer</a>
-                        </div>
                     </div>
+                    <div class="d-sm-flex d-none d-lg-block cmtjouer">
+                        <a class="nav-link" href="#"><img src="/images/interrogation.png">Comment jouer</a>
+                    </div>
+
                 </div>
             </div>
         </nav>
@@ -77,37 +80,33 @@
             <button id="btn-info"><img src="/images/infos.png"> Plus d'infos</button>
         </div>
 
-        <div class="films contenu">
+        <div class="contenu films">
             <h3>Les Films : A trouver</h3>
             <div class="swiper cherche">
                 <div class="swiper-wrapper " id="filmcherche">
-
+                    <!-- <div class="swiper-slide">Slide 1 </div> -->
                 </div>
+                
             </div>
-
-
         </div>
-        <div class="films contenu">
+
+        <div class="contenu films">
             <h3>Les Films : Déja Trouvés</h3>
             <div class="swiper">
-                <div class="swiper-wrapper " id="filmtrouve">
-
-                </div>
+                <div class="swiper-wrapper " id="filmtrouve"></div>
             </div>
         </div>
 
-        <div class="series contenu">
+        <div class="contenu series">
             <h3>Les Séries : A trouver</h3>
             <div class="swiper cherche">
-                <div class="swiper-wrapper " id="seriecherche">
-                </div>
+                <div class="swiper-wrapper " id="seriecherche"></div>
             </div>
         </div>
-        <div class="series contenu">
+        <div class="contenu series">
             <h3>Les Séries : Déja Trouvées</h3>
             <div class="swiper">
-                <div class="swiper-wrapper " id="serietrouve">
-                </div>
+                <div class="swiper-wrapper " id="serietrouve"></div>
             </div>
         </div>
 
